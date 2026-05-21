@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ── Primary SEO ───────────────────────────────────────── -->
+<title>Stackd — Web Systems for SA Commerce | PayFast · TCG · Loyalty</title>
+<meta name="description" content="Production-ready web systems for South African product businesses. PayFast payments, TCG courier integration, and loyalty programmes built in. Live in 2 weeks.">
+<meta name="keywords" content="web development South Africa, PayFast integration, TCG courier, e-commerce SA, web system, Stackd, Corezality">
+<meta name="author" content="Corezality PTY Ltd">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://stackd.co.za/">
+
+<!-- ── Open Graph (WhatsApp, LinkedIn, Facebook previews) ── -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://stackd.co.za/">
+<meta property="og:title" content="Stackd — Web Systems for SA Commerce">
+<meta property="og:description" content="PayFast. TCG shipping. Loyalty. Production-ready in 2 weeks — not 3 months.">
+<meta property="og:image" content="https://stackd.co.za/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_ZA">
+<meta property="og:site_name" content="Stackd">
+
+<!-- ── Twitter / X card ─────────────────────────────────── -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Stackd — Web Systems for SA Commerce">
+<meta name="twitter:description" content="PayFast. TCG shipping. Loyalty. Production-ready in 2 weeks.">
+<meta name="twitter:image" content="https://stackd.co.za/assets/og-image.jpg">
+
+<!-- ── Structured data (JSON-LD) ────────────────────────── -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Stackd",
+  "legalName": "Corezality PTY Ltd",
+  "url": "https://stackd.co.za",
+  "logo": "https://stackd.co.za/assets/logo.png",
+  "description": "Production-ready web systems for South African product businesses. PayFast, TCG courier, and loyalty programmes built in.",
+  "email": "hello@stackd.co.za",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "ZA"
+  },
+  "areaServed": "ZA",
+  "priceRange": "R4500–R16500",
+  "currenciesAccepted": "ZAR",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Web system tiers",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": { "@type": "Service", "name": "Brochure site" },
+        "price": "4500",
+        "priceCurrency": "ZAR"
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": { "@type": "Service", "name": "Commerce site" },
+        "price": "9500",
+        "priceCurrency": "ZAR"
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": { "@type": "Service", "name": "Full stack site" },
+        "price": "16500",
+        "priceCurrency": "ZAR"
+      }
+    ]
+  }
+}
+</script>
+
+<!-- ── Fonts ─────────────────────────────────────────────── -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#08091a;--bg2:#0d0f26;--purple:#7b6fff;
+  --periwinkle:#a8b4ff;--lavender:#c8cfff;--acid:#e1ff01;
+  --text:#e8eaff;--muted:#7880a8;--border:rgba(168,180,255,0.12);
+  --font:'Sora',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:16px;line-height:1.6;overflow-x:hidden;font-weight:300}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 48px;
+  background:rgba(8,9,26,0.85);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{font-weight:800;font-size:20px;letter-spacing:-1px;color:#fff;text-decoration:none}
+.nav-logo span{color:var(--acid)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:400;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{
+  background:var(--acid);color:#08091a;border:none;padding:10px 20px;
+  border-radius:6px;font-family:var(--font);font-weight:600;font-size:13px;
+  cursor:pointer;transition:opacity .2s;display:flex;align-items:center;gap:7px;text-decoration:none;
+}
+.nav-cta:hover{opacity:.88}
+.nav-cta svg{width:15px;height:15px;flex-shrink:0}
+@media(max-width:700px){nav{padding:14px 20px}.nav-links{display:none}}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;padding:120px 24px 80px;position:relative;overflow:hidden;
+}
+.hero-glow{position:absolute;width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(123,111,255,.2) 0%,rgba(168,180,255,.06) 50%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-55%);pointer-events:none}
+.hero-glow2{position:absolute;width:500px;height:350px;background:radial-gradient(ellipse,rgba(225,255,1,.06) 0%,transparent 70%);bottom:5%;right:5%;pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(168,180,255,.08);border:1px solid var(--border);border-radius:100px;padding:6px 18px;font-size:11px;font-weight:500;color:var(--lavender);margin-bottom:36px;letter-spacing:.06em;text-transform:uppercase;animation:fadeUp .5s ease both}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--acid);box-shadow:0 0 10px var(--acid);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.hero h1{font-size:clamp(46px,7vw,84px);font-weight:800;line-height:.95;letter-spacing:-3px;color:#fff;max-width:860px;margin-bottom:28px;animation:fadeUp .65s .1s ease both}
+.hero h1 em{font-style:normal;color:var(--acid)}
+.hero h1 .dim{color:rgba(255,255,255,.3)}
+.hero-sub{font-size:18px;font-weight:300;color:var(--muted);max-width:480px;margin:0 auto 48px;line-height:1.75;animation:fadeUp .65s .2s ease both}
+.hero-sub strong{color:var(--lavender);font-weight:500}
+.hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;animation:fadeUp .65s .32s ease both}
+
+.btn-primary{background:var(--acid);color:#08091a;padding:15px 32px;border-radius:8px;font-family:var(--font);font-weight:700;font-size:14px;border:none;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:9px;transition:transform .15s,box-shadow .2s}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(225,255,1,.18)}
+.btn-ghost{background:transparent;border:1px solid var(--border);color:var(--lavender);padding:15px 32px;border-radius:8px;font-family:var(--font);font-weight:400;font-size:14px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;transition:border-color .2s,color .2s}
+.btn-ghost:hover{border-color:rgba(168,180,255,.4);color:#fff}
+
+/* ── TRUST ── */
+.trust{padding:22px 48px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap;background:rgba(13,15,38,.6)}
+.trust-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;font-weight:500}
+.trust-items{display:flex;gap:32px;align-items:center;flex-wrap:wrap;justify-content:center}
+.trust-item{font-size:12px;font-weight:500;color:var(--muted);display:flex;align-items:center;gap:8px}
+.trust-item::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--purple);display:inline-block}
+.trust-item.sa{color:rgba(225,255,1,.7)}.trust-item.sa::before{background:var(--acid)}
+
+/* ── SECTIONS ── */
+.section{padding:100px 48px}
+@media(max-width:700px){.section{padding:72px 20px}}
+.section-label{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--acid);font-weight:600;margin-bottom:14px}
+.section-heading{font-weight:800;font-size:clamp(30px,4vw,50px);letter-spacing:-1.5px;color:#fff;margin-bottom:14px;line-height:1.05}
+.section-sub{color:var(--muted);font-size:16px;max-width:460px;font-weight:300;line-height:1.75}
+
+/* ── TIERS ── */
+.tiers-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px;margin-top:56px}
+.tier-card{background:var(--bg2);border:1px solid var(--border);border-radius:18px;padding:34px 30px;position:relative;transition:border-color .25s,transform .25s;cursor:pointer}
+.tier-card:hover{border-color:rgba(123,111,255,.45);transform:translateY(-3px)}
+.tier-card.featured{border-color:rgba(225,255,1,.28);background:linear-gradient(150deg,rgba(225,255,1,.05),var(--bg2) 60%)}
+.tier-card.featured:hover{border-color:rgba(225,255,1,.6)}
+.featured-badge{position:absolute;top:-11px;left:28px;background:var(--acid);color:#08091a;font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 12px;border-radius:100px}
+.tier-name{font-weight:700;font-size:17px;color:#fff;margin-bottom:4px}
+.tier-price{font-weight:800;font-size:42px;color:#fff;letter-spacing:-2px;margin:18px 0 3px;line-height:1}
+.tier-delivery{font-size:12px;color:var(--muted);margin-bottom:22px}
+hr.div{border:none;border-top:1px solid var(--border);margin-bottom:20px}
+.tier-features{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.tier-features li{font-size:13px;color:var(--lavender);display:flex;align-items:flex-start;gap:9px;font-weight:300}
+.tier-features li::before{content:'✓';color:var(--acid);font-weight:700;flex-shrink:0;font-size:11px;margin-top:3px}
+.tier-btn{width:100%;padding:12px;border-radius:8px;font-family:var(--font);font-weight:500;font-size:13px;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--lavender);transition:all .2s}
+.tier-card.featured .tier-btn{background:var(--acid);color:#08091a;border-color:var(--acid);font-weight:700}
+.tier-btn:hover{background:rgba(168,180,255,.1);color:#fff}
+.tier-card.featured .tier-btn:hover{opacity:.88}
+.add-ons{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.pill{background:rgba(168,180,255,.06);border:1px solid var(--border);border-radius:100px;padding:8px 16px;font-size:12px;font-weight:400;color:var(--lavender);display:flex;align-items:center;gap:7px}
+.pill.y{border-color:rgba(225,255,1,.2);color:rgba(225,255,1,.8)}
+.dot{width:5px;height:5px;border-radius:50%;background:var(--purple);flex-shrink:0}
+.dot.y{background:var(--acid)}
+
+/* ── HOW ── */
+.how{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));margin-top:56px}
+.step{padding:36px 28px;border-right:1px solid var(--border)}.step:last-child{border-right:none}
+@media(max-width:600px){.step{border-right:none;border-bottom:1px solid var(--border)}}
+.step-num{font-weight:800;font-size:52px;color:rgba(225,255,1,.08);line-height:1;margin-bottom:20px;letter-spacing:-2px}
+.step-title{font-weight:700;font-size:15px;color:#fff;margin-bottom:8px}
+.step-body{font-size:13px;color:var(--muted);line-height:1.7;font-weight:300}
+
+/* ── STACK ── */
+.stack-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:48px}
+.stack-pill{background:rgba(168,180,255,.05);border:1px solid var(--border);border-radius:100px;padding:9px 18px;font-size:12px;font-weight:500;color:var(--lavender);display:flex;align-items:center;gap:7px}
+.stack-pill.sa{border-color:rgba(225,255,1,.3);color:var(--acid)}
+
+/* ── CONTACT ── */
+.contact-section{padding:100px 48px;background:var(--bg2);border-top:1px solid var(--border)}
+@media(max-width:700px){.contact-section{padding:72px 20px}}
+.contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:56px;max-width:920px;margin:52px auto 0;align-items:start}
+@media(max-width:720px){.contact-inner{grid-template-columns:1fr;gap:40px}}
+.email-card{background:linear-gradient(135deg,rgba(123,111,255,.1),rgba(123,111,255,.02));border:1px solid rgba(123,111,255,.22);border-radius:18px;padding:36px 30px}
+.email-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(168,180,255,.7);font-weight:600;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.email-label::before{content:'★';color:var(--acid);font-size:9px}
+.email-title{font-weight:700;font-size:22px;color:#fff;margin-bottom:10px}
+.email-body{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:28px;font-weight:300}
+.email-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--purple);color:#fff;border:none;padding:15px 28px;border-radius:10px;font-family:var(--font);font-weight:600;font-size:14px;cursor:pointer;text-decoration:none;width:100%;transition:opacity .2s,transform .15s}
+.email-btn:hover{opacity:.88;transform:translateY(-1px)}
+.email-note{font-size:11px;color:var(--muted);margin-top:12px;text-align:center;font-weight:300}
+.form-sep{font-size:12px;color:var(--muted);margin-bottom:22px;display:flex;align-items:center;gap:12px}
+.form-sep::before,.form-sep::after{content:'';flex:1;height:1px;background:var(--border)}
+.lead-form{display:flex;flex-direction:column;gap:13px}
+.fg{display:flex;flex-direction:column;gap:5px}
+label{font-size:11px;color:var(--muted);font-weight:500;letter-spacing:.03em}
+input,select,textarea{background:rgba(168,180,255,.05);border:1px solid var(--border);border-radius:8px;padding:11px 14px;color:var(--text);font-family:var(--font);font-size:13px;font-weight:300;transition:border-color .2s;outline:none;width:100%}
+input:focus,select:focus,textarea:focus{border-color:rgba(123,111,255,.55)}
+input::placeholder,textarea::placeholder{color:var(--muted);opacity:.5}
+select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%237880a8' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-color:rgba(168,180,255,.05)}
+select option{background:#0d0f26;color:var(--text)}
+textarea{resize:vertical;min-height:90px;line-height:1.6}
+.form-submit{background:var(--acid);color:#08091a;border:none;padding:13px;border-radius:8px;font-family:var(--font);font-weight:700;font-size:14px;cursor:pointer;transition:opacity .2s,transform .15s;margin-top:4px}
+.form-submit:hover{opacity:.88;transform:translateY(-1px)}
+.form-submit:disabled{opacity:.45;cursor:not-allowed;transform:none}
+
+/* POPIA consent */
+.consent-block{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;background:rgba(168,180,255,.04);border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:border-color .2s}
+.consent-block:hover{border-color:rgba(123,111,255,.3)}
+.consent-block.agreed{border-color:rgba(225,255,1,.25);background:rgba(225,255,1,.03)}
+.consent-checkbox{width:16px;height:16px;border-radius:4px;border:1.5px solid var(--muted);flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;transition:all .15s;font-size:11px;font-weight:700}
+.consent-block.agreed .consent-checkbox{background:var(--acid);border-color:var(--acid);color:#08091a}
+.consent-text{font-size:11px;color:var(--muted);line-height:1.55;font-weight:300}
+.consent-text a{color:var(--lavender);text-decoration:underline;text-underline-offset:2px}
+
+.crm-note{margin-top:8px;font-size:11px;color:var(--muted);display:flex;align-items:center;gap:6px;font-weight:300}
+.form-success{display:none;text-align:center;padding:36px 20px;background:rgba(225,255,1,.04);border:1px solid rgba(225,255,1,.18);border-radius:14px}
+.form-success h3{font-weight:700;color:#fff;margin-bottom:8px;font-size:18px}
+.form-success p{font-size:13px;color:var(--muted);font-weight:300;line-height:1.65}
+.form-success .ck{font-size:36px;margin-bottom:14px}
+
+/* ── CTA ── */
+.cta-section{text-align:center;padding:120px 48px;position:relative;overflow:hidden}
+.cta-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:500px;background:radial-gradient(ellipse,rgba(225,255,1,.05) 0%,transparent 65%);pointer-events:none}
+.cta-section h2{font-weight:800;font-size:clamp(36px,5.5vw,64px);letter-spacing:-2px;color:#fff;max-width:680px;margin:0 auto 18px;line-height:1}
+.cta-section h2 em{font-style:normal;color:var(--acid)}
+.cta-section p{color:var(--muted);font-size:16px;margin-bottom:44px;font-weight:300}
+
+/* ── FOOTER ── */
+footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+@media(max-width:700px){footer{padding:28px 20px;flex-direction:column;text-align:center}}
+.footer-logo{font-weight:800;font-size:18px;color:#fff;letter-spacing:-0.5px}
+.footer-logo span{color:var(--acid)}
+.footer-links{display:flex;gap:24px;flex-wrap:wrap}
+.footer-links a{font-size:12px;color:var(--muted);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--text)}
+.footer-legal{font-size:11px;color:rgba(120,128,168,.45);font-weight:300}
+
+/* ── POPIA MODAL ── */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(8,9,26,.85);z-index:200;align-items:center;justify-content:center;padding:24px}
+.modal-overlay.open{display:flex}
+.modal{background:var(--bg2);border:1px solid var(--border);border-radius:18px;padding:40px;max-width:620px;width:100%;max-height:80vh;overflow-y:auto;position:relative}
+.modal h2{font-weight:800;font-size:22px;color:#fff;margin-bottom:6px;letter-spacing:-0.5px}
+.modal-meta{font-size:11px;color:var(--muted);margin-bottom:24px;font-weight:300}
+.modal h3{font-weight:600;font-size:14px;color:var(--lavender);margin:20px 0 6px}
+.modal p,.modal li{font-size:13px;color:var(--muted);line-height:1.7;font-weight:300}
+.modal ul{padding-left:18px;display:flex;flex-direction:column;gap:6px;margin-top:6px}
+.modal-close{position:absolute;top:20px;right:20px;background:rgba(168,180,255,.08);border:1px solid var(--border);color:var(--muted);border-radius:50%;width:32px;height:32px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all .2s;font-family:var(--font)}
+.modal-close:hover{background:rgba(168,180,255,.15);color:var(--text)}
+
+/* ── COOKIE BANNER ── */
+.cookie-banner{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:14px;padding:18px 24px;
+  display:flex;align-items:center;gap:20px;flex-wrap:wrap;justify-content:center;
+  max-width:720px;width:calc(100% - 48px);
+  z-index:150;box-shadow:0 16px 48px rgba(0,0,0,.5);
+  animation:slideUp .4s ease;
+}
+@keyframes slideUp{from{opacity:0;transform:translateX(-50%) translateY(20px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+.cookie-banner.hidden{display:none}
+.cookie-text{font-size:12px;color:var(--muted);font-weight:300;line-height:1.55;flex:1;min-width:200px}
+.cookie-text a{color:var(--lavender);text-decoration:underline;text-underline-offset:2px;cursor:pointer}
+.cookie-actions{display:flex;gap:8px;flex-shrink:0}
+.cookie-accept{background:var(--acid);color:#08091a;border:none;padding:9px 20px;border-radius:6px;font-family:var(--font);font-weight:600;font-size:12px;cursor:pointer}
+.cookie-decline{background:transparent;border:1px solid var(--border);color:var(--muted);padding:9px 16px;border-radius:6px;font-family:var(--font);font-weight:400;font-size:12px;cursor:pointer;transition:all .2s}
+.cookie-decline:hover{border-color:rgba(168,180,255,.3);color:var(--text)}
+</style>
+</head>
+<body>
+
+<!-- ── COOKIE BANNER (POPIA) ─────────────────────────────── -->
+<div class="cookie-banner" id="cookie-banner" role="dialog" aria-label="Cookie notice">
+  <p class="cookie-text">
+    We use essential cookies to make this site work. By continuing you agree to our
+    <a onclick="openModal()">Privacy Policy</a> in line with POPIA.
+  </p>
+  <div class="cookie-actions">
+    <button class="cookie-decline" onclick="dismissCookie(false)">Decline</button>
+    <button class="cookie-accept" onclick="dismissCookie(true)">Accept</button>
+  </div>
+</div>
+
+<!-- ── PRIVACY POLICY MODAL (POPIA) ─────────────────────── -->
+<div class="modal-overlay" id="privacy-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">✕</button>
+    <h2 id="modal-title">Privacy Policy</h2>
+    <div class="modal-meta">Corezality PTY Ltd (trading as Stackd) · Last updated: May 2026</div>
+
+    <h3>Who we are</h3>
+    <p>Stackd is a web development service operated by Corezality PTY Ltd, registered in South Africa. Contact: <a href="mailto:hello@stackd.co.za" style="color:var(--lavender)">hello@stackd.co.za</a></p>
+
+    <h3>What information we collect</h3>
+    <p>When you submit the contact form on this site, we collect:</p>
+    <ul>
+      <li>Your name</li>
+      <li>Your email address</li>
+      <li>Your business name</li>
+      <li>Any information you voluntarily provide in the message field</li>
+    </ul>
+    <p style="margin-top:10px">We do not collect payment information on this site. We do not use tracking cookies or third-party analytics.</p>
+
+    <h3>Why we collect it</h3>
+    <p>We collect this information solely to respond to your project enquiry and manage our business relationship with you. We do not sell, share, or disclose your personal information to third parties except where required to deliver our service (e.g. our CRM provider).</p>
+
+    <h3>How we store it</h3>
+    <p>Submitted form data is transmitted to our CRM via an encrypted webhook and stored securely. We retain enquiry data for a maximum of 24 months or until you request deletion.</p>
+
+    <h3>Your rights under POPIA</h3>
+    <p>Under the Protection of Personal Information Act (POPIA), Act 4 of 2013, you have the right to:</p>
+    <ul>
+      <li>Access the personal information we hold about you</li>
+      <li>Request correction of inaccurate information</li>
+      <li>Request deletion of your information</li>
+      <li>Object to the processing of your information</li>
+      <li>Lodge a complaint with the Information Regulator of South Africa</li>
+    </ul>
+    <p style="margin-top:10px">To exercise any of these rights, email us at <a href="mailto:hello@stackd.co.za" style="color:var(--lavender)">hello@stackd.co.za</a>. We will respond within 30 days.</p>
+
+    <h3>Cookies</h3>
+    <p>This site uses only essential cookies required for basic functionality. We do not use advertising, tracking, or analytics cookies. You may decline non-essential cookies without affecting your ability to use this site.</p>
+
+    <h3>Information Regulator</h3>
+    <p>You have the right to lodge a complaint with the Information Regulator of South Africa: <a href="https://www.justice.gov.za/inforeg/" target="_blank" rel="noopener noreferrer" style="color:var(--lavender)">justice.gov.za/inforeg</a></p>
+  </div>
+</div>
+
+<!-- ── NAV ─────────────────────────────────────────────────── -->
+<nav>
+  <a href="#" class="nav-logo">stack<span>d</span></a>
+  <ul class="nav-links">
+    <li><a href="#tiers">Pricing</a></li>
+    <li><a href="#how">How it works</a></li>
+    <li><a href="#stack">The stack</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:hello@stackd.co.za?subject=New%20project%20enquiry" class="nav-cta">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+    Email us
+  </a>
+</nav>
+
+<!-- ── HERO ──────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-badge"><span class="badge-dot"></span>Built for South African commerce</div>
+  <h1>Your website<br>is a <em>system.</em><br><span class="dim">Not a page.</span></h1>
+  <p class="hero-sub">PayFast. TCG shipping. Loyalty. <strong>Production-ready in 2 weeks</strong> — not 3 months.</p>
+  <div class="hero-actions">
+    <a href="mailto:hello@stackd.co.za?subject=New%20project%20enquiry" class="btn-primary">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      Email us now
+    </a>
+    <a href="#contact" class="btn-ghost">Send a message</a>
+  </div>
+</section>
+
+<!-- ── TRUST ─────────────────────────────────────────────── -->
+<div class="trust">
+  <span class="trust-label">Powered by</span>
+  <div class="trust-items">
+    <span class="trust-item sa">PayFast</span>
+    <span class="trust-item sa">TCG courier</span>
+    <span class="trust-item">Netlify</span>
+    <span class="trust-item">Supabase</span>
+    <span class="trust-item">Resend</span>
+  </div>
+</div>
+
+<!-- ── TIERS ─────────────────────────────────────────────── -->
+<section class="section" id="tiers">
+  <div class="section-label">Pricing</div>
+  <div class="section-heading">Three tiers.<br>One system.</div>
+  <p class="section-sub">Pick your tier. We configure, theme, and deploy. You launch.</p>
+  <div class="tiers-grid">
+    <div class="tier-card">
+      <div class="tier-name">Brochure</div>
+      <div class="tier-price">R4,500</div>
+      <div class="tier-delivery">5–7 business days</div>
+      <hr class="div">
+      <ul class="tier-features">
+        <li>5–6 section single-page site</li>
+        <li>Your brand, our design system</li>
+        <li>Contact form + email CTA</li>
+        <li>Netlify hosting setup</li>
+        <li>Mobile responsive</li>
+      </ul>
+      <button class="tier-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get started</button>
+    </div>
+    <div class="tier-card featured">
+      <div class="featured-badge">Most popular</div>
+      <div class="tier-name">Commerce</div>
+      <div class="tier-price">R9,500</div>
+      <div class="tier-delivery">10–14 business days</div>
+      <hr class="div">
+      <ul class="tier-features">
+        <li>Everything in Brochure</li>
+        <li>Shopping cart + checkout</li>
+        <li>PayFast payment gateway</li>
+        <li>TCG courier integration</li>
+        <li>Order confirmation emails</li>
+      </ul>
+      <button class="tier-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get started</button>
+    </div>
+    <div class="tier-card">
+      <div class="tier-name">Full stack</div>
+      <div class="tier-price">R16,500</div>
+      <div class="tier-delivery">14–21 business days</div>
+      <hr class="div">
+      <ul class="tier-features">
+        <li>Everything in Commerce</li>
+        <li>Supabase backend</li>
+        <li>Loyalty &amp; rewards programme</li>
+        <li>Transactional email suite</li>
+        <li>Customer accounts</li>
+      </ul>
+      <button class="tier-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get started</button>
+    </div>
+  </div>
+  <div class="add-ons">
+    <div class="pill"><span class="dot"></span>Copywriting +R2,500</div>
+    <div class="pill"><span class="dot"></span>Photography sourcing +R1,200</div>
+    <div class="pill y"><span class="dot y"></span>Maintenance retainer R800/month</div>
+  </div>
+</section>
+
+<!-- ── HOW ───────────────────────────────────────────────── -->
+<section class="section how" id="how">
+  <div class="section-label">Process</div>
+  <div class="section-heading">Questionnaire<br>to live site.</div>
+  <p class="section-sub">A repeatable system. No surprises. No scope creep.</p>
+  <div class="steps">
+    <div class="step"><div class="step-num">01</div><div class="step-title">Fill the questionnaire</div><div class="step-body">Brand, products, colours, copy. 20 minutes. This locks your scope and timeline.</div></div>
+    <div class="step"><div class="step-num">02</div><div class="step-title">We configure + build</div><div class="step-body">We process your answers, theme the system to your brand, and start building.</div></div>
+    <div class="step"><div class="step-num">03</div><div class="step-title">Preview and refine</div><div class="step-body">You get a live preview link. Up to two revision rounds included in every tier.</div></div>
+    <div class="step"><div class="step-num">04</div><div class="step-title">Launch</div><div class="step-body">Domain pointed. Balance paid. You're live. Retainer available if you want us to stay on.</div></div>
+  </div>
+</section>
+
+<!-- ── STACK ─────────────────────────────────────────────── -->
+<section class="section" id="stack">
+  <div class="section-label">The stack</div>
+  <div class="section-heading">SA-native<br>by design.</div>
+  <p class="section-sub">PayFast and TCG are baked in — not bolted on. No other agency or template tool has this ready out of the box.</p>
+  <div class="stack-grid">
+    <div class="stack-pill sa"><span class="dot y"></span>PayFast — SA payments</div>
+    <div class="stack-pill sa"><span class="dot y"></span>TCG — courier integration</div>
+    <div class="stack-pill"><span class="dot"></span>Netlify hosting</div>
+    <div class="stack-pill"><span class="dot"></span>Supabase backend</div>
+    <div class="stack-pill"><span class="dot"></span>Resend email</div>
+    <div class="stack-pill"><span class="dot"></span>Dark design system</div>
+    <div class="stack-pill"><span class="dot"></span>Branch-per-client repo</div>
+    <div class="stack-pill"><span class="dot"></span>Mobile first</div>
+  </div>
+</section>
+
+<!-- ── CONTACT ───────────────────────────────────────────── -->
+<section class="contact-section" id="contact">
+  <div class="section-label">Get in touch</div>
+  <div class="section-heading">Let's talk about<br>your project.</div>
+  <div class="contact-inner">
+    <div class="email-card">
+      <div class="email-label">Direct line</div>
+      <div class="email-title">Drop us an email</div>
+      <p class="email-body">We respond within 1 business day. Tell us what you're building and which tier looks right — we'll confirm the fit and send through next steps.</p>
+      <a href="mailto:hello@stackd.co.za?subject=New%20project%20enquiry" class="email-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        Open email
+      </a>
+      <div class="email-note">hello@stackd.co.za · Mon–Fri, 8am–6pm SAST</div>
+    </div>
+    <div>
+      <div class="form-sep">or fill in the form</div>
+      <div id="form-wrap">
+        <form class="lead-form" id="lead-form" onsubmit="submitForm(event)" novalidate>
+          <div class="fg"><label for="f-name">Your name</label><input type="text" id="f-name" placeholder="Thabo" required autocomplete="name"></div>
+          <div class="fg"><label for="f-email">Email address</label><input type="email" id="f-email" placeholder="thabo@yourbusiness.co.za" required autocomplete="email"></div>
+          <div class="fg"><label for="f-biz">Business name</label><input type="text" id="f-biz" placeholder="Your business" autocomplete="organization"></div>
+          <div class="fg">
+            <label for="f-tier">Tier you're interested in</label>
+            <select id="f-tier">
+              <option value="">Not sure yet</option>
+              <option value="brochure">Brochure — R4,500</option>
+              <option value="commerce">Commerce — R9,500</option>
+              <option value="fullstack">Full stack — R16,500</option>
+            </select>
+          </div>
+          <div class="fg"><label for="f-msg">Tell us about your project</label><textarea id="f-msg" placeholder="What do you sell, who are your customers, what's your timeline?"></textarea></div>
+
+          <!-- POPIA consent checkbox -->
+          <div class="consent-block" id="consent-block" onclick="toggleConsent()" role="checkbox" aria-checked="false" tabindex="0">
+            <div class="consent-checkbox" id="consent-box"></div>
+            <div class="consent-text">
+              I agree that Stackd (Corezality PTY Ltd) may store and process the information I've provided to respond to my enquiry, in accordance with the <a onclick="event.stopPropagation();openModal()">Privacy Policy</a> and POPIA.
+            </div>
+          </div>
+
+          <button class="form-submit" type="submit" id="submit-btn">Send message</button>
+          <div class="crm-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" width="12" height="12"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Sent to CRM · we follow up within 1 business day
+          </div>
+        </form>
+      </div>
+      <div class="form-success" id="form-success">
+        <div class="ck">✅</div>
+        <h3>Message received</h3>
+        <p>We'll be in touch within 1 business day.<br>Or email us at hello@stackd.co.za</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ───────────────────────────────────────────────── -->
+<section class="cta-section">
+  <div class="cta-glow"></div>
+  <h2>Ready to build a<br><em>real</em> web system?</h2>
+  <p>50% deposit. Questionnaire. Live in 2 weeks.</p>
+  <div class="hero-actions">
+    <a href="mailto:hello@stackd.co.za?subject=New%20project%20enquiry" class="btn-primary">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      Email us now
+    </a>
+    <a href="#contact" class="btn-ghost">Leave a message</a>
+  </div>
+</section>
+
+<!-- ── FOOTER ────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-logo">stack<span>d</span></div>
+  <div class="footer-links">
+    <a href="#tiers">Pricing</a>
+    <a href="#how">Process</a>
+    <a href="#stack">Stack</a>
+    <a href="#contact">Contact</a>
+    <a href="#" onclick="openModal();return false">Privacy Policy</a>
+  </div>
+  <div class="footer-legal">Corezality PTY Ltd · South Africa · POPIA compliant</div>
+</footer>
+
+<script>
+// ── Cookie consent ───────────────────────────────────────
+function dismissCookie(accepted) {
+  localStorage.setItem('stackd_cookie', accepted ? 'accepted' : 'declined');
+  document.getElementById('cookie-banner').classList.add('hidden');
+}
+(function(){
+  if(localStorage.getItem('stackd_cookie')) {
+    document.getElementById('cookie-banner').classList.add('hidden');
+  }
+})();
+
+// ── Privacy modal ────────────────────────────────────────
+function openModal() {
+  document.getElementById('privacy-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('privacy-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('privacy-modal').addEventListener('click', function(e){
+  if(e.target === this) closeModal();
+});
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape') closeModal();
+});
+
+// ── POPIA consent toggle ─────────────────────────────────
+let consentGiven = false;
+function toggleConsent() {
+  consentGiven = !consentGiven;
+  const block = document.getElementById('consent-block');
+  const box   = document.getElementById('consent-box');
+  block.classList.toggle('agreed', consentGiven);
+  block.setAttribute('aria-checked', consentGiven);
+  box.textContent = consentGiven ? '✓' : '';
+}
+
+// ── Form submission ──────────────────────────────────────
+async function submitForm(e) {
+  e.preventDefault();
+  if (!consentGiven) {
+    alert('Please agree to the privacy policy before submitting.');
+    return;
+  }
+  const name  = document.getElementById('f-name').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  if (!name || !email) {
+    alert('Please fill in your name and email address.');
+    return;
+  }
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+
+  const payload = {
+    name,
+    email,
+    business:       document.getElementById('f-biz').value.trim(),
+    tier:           document.getElementById('f-tier').value,
+    message:        document.getElementById('f-msg').value.trim(),
+    consent_given:  true,
+    consent_time:   new Date().toISOString(),
+    source:         'stackd.co.za contact form'
+  };
+
+  // Replace with your Zapier / Make webhook URL
+  const WEBHOOK_URL = 'YOUR_WEBHOOK_URL_HERE';
+
+  try {
+    if (WEBHOOK_URL !== 'YOUR_WEBHOOK_URL_HERE') {
+      await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+    }
+    document.getElementById('form-wrap').style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+  } catch(err) {
+    btn.disabled = false;
+    btn.textContent = 'Send message';
+    alert('Something went wrong — please email us at hello@stackd.co.za');
+  }
+}
+</script>
+</body>
+</html>
