@@ -1,4 +1,4 @@
-# OS
+# OS files
 .DS_Store
 Thumbs.db
 desktop.ini
@@ -6,15 +6,15 @@ desktop.ini
 # Editor
 .vscode\
 .idea\
-*.suo
-*.user
 
 # Logs
 *.log
-npm-debug.log*
 
-# Secrets — never commit these
+# NEVER commit secrets
 .env
 .env.local
 *.env
 secrets.json
+
+# This setup file — delete it after use
+git-setup-grdbase.bat

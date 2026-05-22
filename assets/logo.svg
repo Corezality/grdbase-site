@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 48" width="200" height="48">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Sora:wght@800');
+    </style>
+  </defs>
+  <rect width="200" height="48" fill="transparent"/>
+  <!-- gr -->
+  <text x="0" y="38" font-family="Sora, sans-serif" font-weight="800" font-size="40" letter-spacing="-2" fill="#ffffff">gr</text>
+  <!-- d accent -->
+  <text x="54" y="38" font-family="Sora, sans-serif" font-weight="800" font-size="40" letter-spacing="-2" fill="#e1ff01">d</text>
+  <!-- base -->
+  <text x="78" y="38" font-family="Sora, sans-serif" font-weight="800" font-size="40" letter-spacing="-2" fill="#ffffff">base</text>
+</svg>

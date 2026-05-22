@@ -94,23 +94,55 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:16
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
   display:flex;align-items:center;justify-content:space-between;
-  padding:16px 48px;
-  background:rgba(8,9,26,0.85);backdrop-filter:blur(20px);
+  padding:14px 40px;gap:16px;
+  background:rgba(8,9,26,0.88);backdrop-filter:blur(20px);
   border-bottom:1px solid var(--border);
 }
-.nav-logo{font-weight:800;font-size:20px;letter-spacing:-1px;color:#fff;text-decoration:none}
+.nav-logo{font-weight:800;font-size:19px;letter-spacing:-1px;color:#fff;text-decoration:none;flex-shrink:0}
 .nav-logo span{color:var(--acid)}
-.nav-links{display:flex;gap:32px;list-style:none}
-.nav-links a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:400;transition:color .2s}
+.nav-links{display:flex;gap:24px;list-style:none;flex:1;justify-content:center}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:400;transition:color .2s;white-space:nowrap}
 .nav-links a:hover{color:var(--text)}
+.nav-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.nav-start{
+  background:transparent;border:1px solid var(--border);color:var(--lavender);
+  padding:9px 18px;border-radius:6px;font-family:var(--font);font-weight:500;font-size:13px;
+  text-decoration:none;white-space:nowrap;transition:border-color .2s,color .2s;
+}
+.nav-start:hover{border-color:rgba(168,180,255,.35);color:#fff}
 .nav-cta{
-  background:var(--acid);color:#08091a;border:none;padding:10px 20px;
+  background:var(--acid);color:#08091a;border:none;padding:9px 18px;
   border-radius:6px;font-family:var(--font);font-weight:600;font-size:13px;
-  cursor:pointer;transition:opacity .2s;display:flex;align-items:center;gap:7px;text-decoration:none;
+  cursor:pointer;transition:opacity .2s;display:flex;align-items:center;gap:7px;
+  text-decoration:none;white-space:nowrap;flex-shrink:0;
 }
 .nav-cta:hover{opacity:.88}
-.nav-cta svg{width:15px;height:15px;flex-shrink:0}
-@media(max-width:700px){nav{padding:14px 20px}.nav-links{display:none}}
+.nav-cta svg{width:14px;height:14px;flex-shrink:0}
+.nav-hamburger{
+  display:none;background:transparent;border:1px solid var(--border);
+  border-radius:6px;padding:8px;cursor:pointer;flex-direction:column;
+  gap:4px;width:36px;height:36px;align-items:center;justify-content:center;
+}
+.nav-hamburger span{display:block;width:16px;height:1.5px;background:var(--lavender);transition:all .2s}
+.mobile-menu{
+  display:none;position:fixed;top:57px;left:0;right:0;z-index:99;
+  background:rgba(8,9,26,.97);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);padding:20px 24px;
+  flex-direction:column;gap:4px;
+}
+.mobile-menu.open{display:flex}
+.mobile-menu a{color:var(--muted);text-decoration:none;font-size:15px;font-weight:400;padding:10px 0;border-bottom:1px solid var(--border);transition:color .2s}
+.mobile-menu a:hover{color:var(--text)}
+.mobile-menu .mobile-start{color:var(--acid);font-weight:600;border-bottom:none;margin-top:8px}
+@media(max-width:800px){
+  nav{padding:12px 20px}
+  .nav-links{display:none}
+  .nav-start{display:none}
+  .nav-hamburger{display:flex}
+}
+@media(max-width:480px){
+  .nav-cta span{display:none}
+}
 
 /* ── HERO ── */
 .hero{
@@ -169,6 +201,14 @@ hr.div{border:none;border-top:1px solid var(--border);margin-bottom:20px}
 .tier-card.featured .tier-btn{background:var(--acid);color:#08091a;border-color:var(--acid);font-weight:700}
 .tier-btn:hover{background:rgba(168,180,255,.1);color:#fff}
 .tier-card.featured .tier-btn:hover{opacity:.88}
+.tier-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:auto}
+.tier-deposit-label{font-size:12px;color:var(--muted);margin-bottom:4px;font-weight:300}
+.tier-deposit-label strong{color:var(--lavender);font-weight:600}
+.tier-pay-btn{padding:12px;border-radius:8px;font-family:var(--font);font-weight:700;font-size:13px;cursor:pointer;border:none;background:rgba(225,255,1,.12);color:var(--acid);transition:all .2s;border:1px solid rgba(225,255,1,.25)}
+.tier-pay-btn:hover{background:rgba(225,255,1,.2);transform:translateY(-1px)}
+.tier-pay-btn.featured-pay{background:rgba(8,9,26,.3);color:#08091a;border-color:rgba(8,9,26,.2)}
+.tier-card.featured .tier-pay-btn.featured-pay{background:rgba(8,9,26,.25);color:#08091a;border:1px solid rgba(8,9,26,.3)}
+.tier-pay-btn.featured-pay:hover{background:rgba(8,9,26,.4)}
 .add-ons{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
 .pill{background:rgba(168,180,255,.06);border:1px solid var(--border);border-radius:100px;padding:8px 16px;font-size:12px;font-weight:400;color:var(--lavender);display:flex;align-items:center;gap:7px}
 .pill.y{border-color:rgba(225,255,1,.2);color:rgba(225,255,1,.8)}
@@ -342,18 +382,32 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;align-i
 
 <!-- ── NAV ─────────────────────────────────────────────────── -->
 <nav>
-  <a href="#" class="nav-logo">gr<span>d</span>base</a>
+  <a href="/" class="nav-logo">gr<span>d</span>base</a>
   <ul class="nav-links">
     <li><a href="#tiers">Pricing</a></li>
     <li><a href="#how">How it works</a></li>
-    <li><a href="#stack">The stack</a></li>
+    <li><a href="#stack">Stack</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="mailto:hello@grdbase.co.za?subject=New%20project%20enquiry" class="nav-cta">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-    Email us
-  </a>
+  <div class="nav-actions">
+    <a href="/start.html" class="nav-start">Start project</a>
+    <a href="mailto:hello@grdbase.co.za?subject=New%20project%20enquiry" class="nav-cta">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      Email us
+    </a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#tiers" onclick="closeMobile()">Pricing</a>
+  <a href="#how" onclick="closeMobile()">How it works</a>
+  <a href="#stack" onclick="closeMobile()">Stack</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+  <a href="/start.html" class="mobile-start">Start project →</a>
+</div>
 
 <!-- ── HERO ──────────────────────────────────────────────── -->
 <section class="hero">
@@ -363,11 +417,11 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;align-i
   <h1>Your website<br>is a <em>system.</em><br><span class="dim">Not a page.</span></h1>
   <p class="hero-sub">PayFast. TCG shipping. Loyalty. <strong>Production-ready in 2 weeks</strong> — not 3 months.</p>
   <div class="hero-actions">
-    <a href="mailto:hello@grdbase.co.za?subject=New%20project%20enquiry" class="btn-primary">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-      Email us now
+    <a href="/start.html" class="btn-primary">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      Start your project
     </a>
-    <a href="#contact" class="btn-ghost">Send a message</a>
+    <a href="#tiers" class="btn-ghost">See pricing first</a>
   </div>
 </section>
 
@@ -392,22 +446,27 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;align-i
     <div class="tier-card">
       <div class="tier-name">Brochure</div>
       <div class="tier-price">R4,500</div>
-      <div class="tier-delivery">5–7 business days</div>
+      <div class="tier-deposit-label">50% deposit &mdash; <strong>R2,250</strong></div>
+      <div class="tier-delivery">5&ndash;7 business days</div>
       <hr class="div">
       <ul class="tier-features">
-        <li>5–6 section single-page site</li>
+        <li>5&ndash;6 section single-page site</li>
         <li>Your brand, our design system</li>
         <li>Contact form + email CTA</li>
         <li>Netlify hosting setup</li>
         <li>Mobile responsive</li>
       </ul>
-      <button class="tier-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get started</button>
+      <div class="tier-actions">
+        <button class="tier-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Ask a question</button>
+        <button class="tier-pay-btn" onclick="openPayModal('Brochure', 225000)">Pay deposit</button>
+      </div>
     </div>
     <div class="tier-card featured">
       <div class="featured-badge">Most popular</div>
       <div class="tier-name">Commerce</div>
       <div class="tier-price">R9,500</div>
-      <div class="tier-delivery">10–14 business days</div>
+      <div class="tier-deposit-label">50% deposit &mdash; <strong>R4,750</strong></div>
+      <div class="tier-delivery">10&ndash;14 business days</div>
       <hr class="div">
       <ul class="tier-features">
         <li>Everything in Brochure</li>
@@ -416,12 +475,16 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;align-i
         <li>TCG courier integration</li>
         <li>Order confirmation emails</li>
       </ul>
-      <button class="tier-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get started</button>
+      <div class="tier-actions">
+        <button class="tier-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Ask a question</button>
+        <button class="tier-pay-btn featured-pay" onclick="openPayModal('Commerce', 475000)">Pay deposit</button>
+      </div>
     </div>
     <div class="tier-card">
       <div class="tier-name">Full stack</div>
       <div class="tier-price">R16,500</div>
-      <div class="tier-delivery">14–21 business days</div>
+      <div class="tier-deposit-label">50% deposit &mdash; <strong>R8,250</strong></div>
+      <div class="tier-delivery">14&ndash;21 business days</div>
       <hr class="div">
       <ul class="tier-features">
         <li>Everything in Commerce</li>
@@ -430,7 +493,10 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;align-i
         <li>Transactional email suite</li>
         <li>Customer accounts</li>
       </ul>
-      <button class="tier-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get started</button>
+      <div class="tier-actions">
+        <button class="tier-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Ask a question</button>
+        <button class="tier-pay-btn" onclick="openPayModal('Full stack', 825000)">Pay deposit</button>
+      </div>
     </div>
   </div>
   <div class="add-ons">
@@ -558,11 +624,11 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;align-i
   <h2>Ready to build a<br><em>real</em> web system?</h2>
   <p>50% deposit. Questionnaire. Live in 2 weeks.</p>
   <div class="hero-actions">
-    <a href="mailto:hello@grdbase.co.za?subject=New%20project%20enquiry" class="btn-primary">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-      Email us now
+    <a href="/start.html" class="btn-primary">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:17px;height:17px"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      Start your project
     </a>
-    <a href="#contact" class="btn-ghost">Leave a message</a>
+    <a href="#contact" class="btn-ghost">Send a message first</a>
   </div>
 </section>
 
@@ -580,6 +646,81 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;align-i
 </footer>
 
 <script>
+
+// ── PayFast deposit modal ────────────────────────────────
+let payTier = '';
+let payAmountCents = 0;
+
+function openPayModal(tier, amountCents) {
+  payTier = tier;
+  payAmountCents = amountCents;
+  const rands = (amountCents / 100).toFixed(2);
+  document.getElementById('pay-tier-label').textContent   = tier + ' tier';
+  document.getElementById('pay-amount-label').textContent = 'R' + Number(rands).toLocaleString('en-ZA', {minimumFractionDigits:2});
+  document.getElementById('pay-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('pay-name').focus();
+}
+
+function closePayModal() {
+  document.getElementById('pay-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+const payModalEl = document.getElementById('pay-modal');
+if(payModalEl) payModalEl.addEventListener('click', function(e){
+  if (e.target === this) closePayModal();
+});
+
+function submitPayfast() {
+  const fullName  = document.getElementById('pay-name').value.trim();
+  const email     = document.getElementById('pay-email').value.trim();
+
+  if (!fullName || !email) {
+    alert('Please enter your name and email before paying.');
+    return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    alert('Please enter a valid email address.');
+    return;
+  }
+
+  const parts     = fullName.split(' ');
+  const firstName = parts[0];
+  const lastName  = parts.slice(1).join(' ') || '-';
+  const rands     = (payAmountCents / 100).toFixed(2);
+  const paymentId = 'GRD-' + Date.now();
+
+  document.getElementById('pf-name-first').value  = firstName;
+  document.getElementById('pf-name-last').value   = lastName;
+  document.getElementById('pf-email').value       = email;
+  document.getElementById('pf-amount').value      = rands;
+  document.getElementById('pf-payment-id').value  = paymentId;
+  document.getElementById('pf-item-name').value   = 'Grdbase ' + payTier + ' deposit';
+  document.getElementById('pf-item-desc').value   = '50% deposit for Grdbase ' + payTier + ' web system. Payment ID: ' + paymentId;
+
+  document.getElementById('payfast-form').submit();
+}
+
+
+// ── Mobile nav ───────────────────────────────────────────
+const hamburger = document.getElementById('nav-hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+if(hamburger && mobileMenu){
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+}
+function closeMobile(){
+  if(mobileMenu) mobileMenu.classList.remove('open');
+}
+// Close mobile menu on outside click
+document.addEventListener('click', (e) => {
+  if(mobileMenu && !mobileMenu.contains(e.target) && !hamburger.contains(e.target)){
+    mobileMenu.classList.remove('open');
+  }
+});
+
 // ── Cookie consent ───────────────────────────────────────
 function dismissCookie(accepted) {
   localStorage.setItem('stackd_cookie', accepted ? 'accepted' : 'declined');
@@ -600,7 +741,8 @@ function closeModal() {
   document.getElementById('privacy-modal').classList.remove('open');
   document.body.style.overflow = '';
 }
-document.getElementById('privacy-modal').addEventListener('click', function(e){
+const privacyModal = document.getElementById('privacy-modal');
+if(privacyModal) privacyModal.addEventListener('click', function(e){
   if(e.target === this) closeModal();
 });
 document.addEventListener('keydown', function(e){
@@ -671,5 +813,91 @@ async function handleSubmit(e) {
   }
 }
 </script>
+
+<!-- ── PAYFAST DEPOSIT MODAL ────────────────────────────── -->
+<div class="modal-overlay" id="pay-modal" role="dialog" aria-modal="true" aria-labelledby="pay-modal-title">
+  <div class="modal" style="max-width:480px">
+    <button class="modal-close" onclick="closePayModal()" aria-label="Close">&#x2715;</button>
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+      <div style="width:36px;height:36px;border-radius:8px;background:rgba(225,255,1,.1);border:1px solid rgba(225,255,1,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--acid)" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+      </div>
+      <h2 id="pay-modal-title" style="font-size:20px;letter-spacing:-0.5px">Pay your deposit</h2>
+    </div>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:24px;font-weight:300;line-height:1.6">
+      Secure 50% deposit via PayFast. Work begins immediately after payment. Balance due before go-live.
+    </p>
+
+    <!-- Summary -->
+    <div style="background:rgba(168,180,255,.05);border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin-bottom:20px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <span style="font-size:12px;color:var(--muted)">Tier</span>
+        <span style="font-size:13px;color:#fff;font-weight:600" id="pay-tier-label">—</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <span style="font-size:12px;color:var(--muted)">Deposit (50%)</span>
+        <span style="font-size:20px;color:var(--acid);font-weight:800;letter-spacing:-1px" id="pay-amount-label">—</span>
+      </div>
+      <div style="border-top:1px solid var(--border);margin-top:10px;padding-top:10px;font-size:11px;color:var(--muted);font-weight:300">
+        Balance invoiced separately before go-live date.
+      </div>
+    </div>
+
+    <!-- Client details -->
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px">
+      <div class="fg"><label>Your name</label><input type="text" id="pay-name" placeholder="Thabo Dlamini" autocomplete="name"></div>
+      <div class="fg"><label>Email address</label><input type="email" id="pay-email" placeholder="thabo@yourbusiness.co.za" autocomplete="email"></div>
+    </div>
+
+    <!-- PayFast sandbox form -->
+    <!--
+      SANDBOX MODE — safe for testing, no real money moves.
+      TO GO LIVE:
+        1. Replace merchant_id and merchant_key with your real PayFast credentials
+        2. Change action URL from sandbox.payfast.co.za to www.payfast.co.za
+        3. Set sandbox input value to "false" or remove it entirely
+      GET CREDENTIALS: https://www.payfast.co.za → My Account → Settings → API credentials
+    -->
+    <form id="payfast-form" action="https://sandbox.payfast.co.za/eng/process" method="POST">
+      <!-- Merchant credentials — REPLACE WITH YOUR OWN -->
+      <input type="hidden" name="merchant_id"  value="10000100">
+      <input type="hidden" name="merchant_key" value="46f0cd694581a">
+
+      <!-- Return URLs — update domain once live -->
+      <input type="hidden" name="return_url"  value="https://grdbase.co.za/thank-you.html">
+      <input type="hidden" name="cancel_url"  value="https://grdbase.co.za/#tiers">
+      <input type="hidden" name="notify_url"  value="https://grdbase.co.za/.netlify/functions/payfast-notify">
+
+      <!-- Buyer details — populated by JS -->
+      <input type="hidden" name="name_first" id="pf-name-first" value="">
+      <input type="hidden" name="name_last"  id="pf-name-last"  value="">
+      <input type="hidden" name="email_address" id="pf-email" value="">
+
+      <!-- Payment details — populated by JS -->
+      <input type="hidden" name="m_payment_id" id="pf-payment-id" value="">
+      <input type="hidden" name="amount"        id="pf-amount"     value="">
+      <input type="hidden" name="item_name"     id="pf-item-name"  value="">
+      <input type="hidden" name="item_description" id="pf-item-desc" value="">
+
+      <!-- Sandbox flag — remove in production -->
+      <input type="hidden" name="sandbox" value="true">
+    </form>
+
+    <button
+      onclick="submitPayfast()"
+      style="width:100%;padding:15px;border-radius:10px;background:var(--acid);color:#08091a;border:none;font-family:var(--font);font-weight:800;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:opacity .2s,transform .15s;margin-bottom:12px"
+      onmouseover="this.style.opacity='.88'" onmouseout="this.style.opacity='1'"
+    >
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Pay securely via PayFast
+    </button>
+    <p style="text-align:center;font-size:11px;color:var(--muted);font-weight:300;line-height:1.6">
+      You'll be redirected to PayFast's secure checkout.<br>
+      Visa, Mastercard, EFT, SnapScan &amp; Ozow accepted.
+    </p>
+  </div>
+</div>
+
+<!-- ── THANK YOU PAGE redirect target (inline for MVP) ──── -->
 </body>
 </html>

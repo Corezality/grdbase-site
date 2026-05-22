@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Start your project — Grdbase</title>
+<meta name="description" content="Tell us about your business. Our AI builds your site config and copy in minutes.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#08091a;--bg2:#0d0f26;--bg3:#111428;
+  --purple:#7b6fff;--lavender:#c8cfff;--acid:#e1ff01;
+  --text:#e8eaff;--muted:#7880a8;--border:rgba(168,180,255,0.1);
+  --green:#4ade80;--red:#f87171;
+  --font:'Sora',sans-serif;--mono:'JetBrains Mono',monospace;
+}
+html,body{height:100%;overflow:hidden}
+body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:15px;font-weight:300;display:flex;flex-direction:column}
+
+/* ── AMBIENT BG ── */
+.ambient{position:fixed;inset:0;pointer-events:none;z-index:0}
+.amb-circle{position:absolute;border-radius:50%}
+.amb-1{width:600px;height:600px;background:radial-gradient(circle,rgba(123,111,255,.12) 0%,transparent 70%);top:-200px;right:-100px}
+.amb-2{width:400px;height:400px;background:radial-gradient(circle,rgba(225,255,1,.06) 0%,transparent 70%);bottom:-100px;left:-50px}
+.amb-3{width:300px;height:300px;background:radial-gradient(circle,rgba(123,111,255,.08) 0%,transparent 70%);bottom:30%;right:10%}
+
+/* ── TOP BAR ── */
+.topbar{
+  position:relative;z-index:10;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 32px;
+  border-bottom:1px solid var(--border);
+  background:rgba(8,9,26,.8);backdrop-filter:blur(20px);
+  flex-shrink:0;
+}
+.logo{font-weight:800;font-size:18px;color:#fff;text-decoration:none;letter-spacing:-0.5px}
+.logo span{color:var(--acid)}
+.topbar-right{display:flex;align-items:center;gap:16px}
+.step-indicator{font-size:11px;color:var(--muted);font-family:var(--mono)}
+.step-indicator strong{color:var(--lavender)}
+.back-link{font-size:12px;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color .2s}
+.back-link:hover{color:var(--text)}
+
+/* ── PROGRESS ── */
+.progress-bar-wrap{height:2px;background:rgba(168,180,255,.08);flex-shrink:0;position:relative;z-index:10}
+.progress-bar-fill{height:100%;background:linear-gradient(90deg,var(--purple),var(--acid));transition:width .5s cubic-bezier(.4,0,.2,1)}
+
+/* ── MAIN LAYOUT ── */
+.main{flex:1;display:grid;grid-template-columns:1fr 380px;overflow:hidden;position:relative;z-index:1}
+@media(max-width:768px){.main{grid-template-columns:1fr}}
+
+/* ── CHAT PANEL ── */
+.chat-panel{display:flex;flex-direction:column;border-right:1px solid var(--border);overflow:hidden}
+.messages{flex:1;overflow-y:auto;padding:32px 32px 16px;display:flex;flex-direction:column;gap:20px;scroll-behavior:smooth}
+.messages::-webkit-scrollbar{width:4px}
+.messages::-webkit-scrollbar-track{background:transparent}
+.messages::-webkit-scrollbar-thumb{background:rgba(168,180,255,.15);border-radius:2px}
+
+/* message bubbles */
+.msg{display:flex;gap:12px;animation:msgIn .35s cubic-bezier(.4,0,.2,1) both}
+@keyframes msgIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.msg.user{flex-direction:row-reverse}
+
+.avatar{
+  width:32px;height:32px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:13px;margin-top:2px;
+}
+.avatar.agent{background:rgba(225,255,1,.1);border:1px solid rgba(225,255,1,.2);color:var(--acid);font-weight:700;font-size:10px;letter-spacing:.05em}
+.avatar.user{background:rgba(123,111,255,.15);border:1px solid rgba(123,111,255,.25);color:var(--purple);font-weight:700;font-size:11px}
+
+.bubble{
+  max-width:82%;padding:14px 18px;border-radius:16px;
+  font-size:14px;line-height:1.65;font-weight:300;
+}
+.bubble.agent{
+  background:var(--bg2);border:1px solid var(--border);
+  border-top-left-radius:4px;color:var(--text);
+}
+.bubble.user{
+  background:rgba(123,111,255,.15);border:1px solid rgba(123,111,255,.25);
+  border-top-right-radius:4px;color:var(--lavender);text-align:right;
+}
+.bubble strong{color:#fff;font-weight:600}
+.bubble .acid{color:var(--acid);font-weight:600}
+
+/* typing indicator */
+.typing-indicator{display:flex;gap:5px;align-items:center;padding:14px 18px}
+.typing-dot{width:6px;height:6px;border-radius:50%;background:var(--muted);animation:blink 1.2s ease-in-out infinite}
+.typing-dot:nth-child(2){animation-delay:.2s}
+.typing-dot:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,100%{opacity:.3;transform:scale(.8)}50%{opacity:1;transform:scale(1)}}
+
+/* ── INPUT AREA ── */
+.input-area{
+  padding:16px 32px 24px;border-top:1px solid var(--border);
+  background:rgba(8,9,26,.5);backdrop-filter:blur(10px);
+  flex-shrink:0;
+}
+.input-row{display:flex;gap:10px;align-items:flex-end}
+.msg-input{
+  flex:1;background:rgba(168,180,255,.06);border:1px solid var(--border);
+  border-radius:12px;padding:13px 16px;color:var(--text);
+  font-family:var(--font);font-size:14px;font-weight:300;
+  resize:none;outline:none;transition:border-color .2s;
+  min-height:48px;max-height:140px;line-height:1.5;
+}
+.msg-input:focus{border-color:rgba(123,111,255,.4)}
+.msg-input::placeholder{color:var(--muted);opacity:.6}
+.send-btn{
+  width:48px;height:48px;border-radius:12px;
+  background:var(--acid);border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity .2s,transform .15s;flex-shrink:0;
+}
+.send-btn:hover{opacity:.88;transform:translateY(-1px)}
+.send-btn:disabled{opacity:.3;cursor:not-allowed;transform:none}
+.send-btn svg{width:18px;height:18px;color:#08091a}
+.input-hint{font-size:11px;color:var(--muted);margin-top:8px;font-weight:300;text-align:center}
+
+/* quick reply chips */
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.chip{
+  background:rgba(168,180,255,.06);border:1px solid var(--border);
+  border-radius:100px;padding:7px 14px;font-size:12px;font-weight:500;
+  color:var(--lavender);cursor:pointer;transition:all .15s;font-family:var(--font);
+}
+.chip:hover{border-color:rgba(123,111,255,.4);background:rgba(123,111,255,.1);color:#fff}
+.chip.acid-chip{border-color:rgba(225,255,1,.25);color:var(--acid);background:rgba(225,255,1,.05)}
+.chip.acid-chip:hover{background:rgba(225,255,1,.12)}
+
+/* ── SIDEBAR PANEL ── */
+.sidebar-panel{
+  overflow-y:auto;padding:28px 24px;
+  background:rgba(13,15,38,.5);
+  display:flex;flex-direction:column;gap:20px;
+}
+.sidebar-panel::-webkit-scrollbar{width:3px}
+.sidebar-panel::-webkit-scrollbar-thumb{background:rgba(168,180,255,.1)}
+@media(max-width:768px){.sidebar-panel{display:none}}
+
+.sidebar-section{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:18px}
+.sidebar-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--acid);font-weight:600;margin-bottom:14px}
+
+/* config preview */
+.config-field{display:flex;flex-direction:column;gap:3px;margin-bottom:12px}
+.config-field:last-child{margin-bottom:0}
+.config-key{font-size:10px;color:var(--muted);font-family:var(--mono);font-weight:500}
+.config-val{font-size:12px;color:var(--lavender);font-weight:400;word-break:break-word}
+.config-val.empty{color:rgba(120,128,168,.35);font-style:italic}
+.config-val.filled{color:#fff;animation:highlight .5s ease}
+@keyframes highlight{0%{color:var(--acid)}100%{color:#fff}}
+
+/* tier recommendation */
+.tier-rec{
+  border-radius:10px;padding:14px;
+  background:rgba(225,255,1,.06);border:1px solid rgba(225,255,1,.2);
+  display:none;
+}
+.tier-rec.visible{display:block;animation:msgIn .4s ease both}
+.tier-name-rec{font-weight:700;color:#fff;font-size:15px;margin-bottom:4px}
+.tier-price-rec{font-size:24px;font-weight:800;color:var(--acid);letter-spacing:-1px;margin-bottom:8px}
+.tier-why{font-size:12px;color:var(--muted);line-height:1.6;font-weight:300}
+
+/* pay button in sidebar */
+.sidebar-pay-btn{
+  width:100%;padding:14px;border-radius:10px;
+  background:var(--acid);color:#08091a;border:none;
+  font-family:var(--font);font-weight:800;font-size:14px;
+  cursor:pointer;transition:opacity .2s,transform .15s;
+  display:none;margin-top:4px;
+}
+.sidebar-pay-btn.visible{display:block;animation:msgIn .4s .2s ease both}
+.sidebar-pay-btn:hover{opacity:.88;transform:translateY(-1px)}
+
+/* summary card */
+.summary-item{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;padding:8px 0;border-bottom:1px solid var(--border);font-size:12px}
+.summary-item:last-child{border-bottom:none}
+.summary-key{color:var(--muted);font-weight:400;flex-shrink:0}
+.summary-val{color:var(--lavender);text-align:right;font-weight:400}
+
+/* ── PAYFAST MODAL ── */
+.pf-overlay{display:none;position:fixed;inset:0;background:rgba(8,9,26,.9);z-index:200;align-items:center;justify-content:center;padding:24px}
+.pf-overlay.open{display:flex}
+.pf-modal{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:40px;max-width:440px;width:100%;position:relative;animation:msgIn .3s ease both}
+.pf-close{position:absolute;top:16px;right:16px;background:rgba(168,180,255,.08);border:1px solid var(--border);color:var(--muted);border-radius:50%;width:30px;height:30px;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;font-family:var(--font)}
+.pf-close:hover{color:var(--text)}
+.pf-logo{font-weight:800;font-size:15px;color:#fff;letter-spacing:-0.5px;margin-bottom:24px}
+.pf-logo span{color:var(--acid)}
+.pf-summary{background:rgba(168,180,255,.04);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:20px}
+.pf-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-size:13px}
+.pf-row:last-child{margin-bottom:0}
+.pf-row-key{color:var(--muted);font-weight:300}
+.pf-row-val{color:#fff;font-weight:600}
+.pf-row-val.big{font-size:22px;font-weight:800;color:var(--acid);letter-spacing:-1px}
+.pf-input-wrap{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+.pf-label{font-size:11px;color:var(--muted);font-weight:500;letter-spacing:.03em;margin-bottom:4px}
+.pf-input{background:rgba(168,180,255,.05);border:1px solid var(--border);border-radius:8px;padding:11px 14px;color:var(--text);font-family:var(--font);font-size:13px;outline:none;width:100%;transition:border-color .2s}
+.pf-input:focus{border-color:rgba(123,111,255,.5)}
+.pf-input::placeholder{color:var(--muted);opacity:.5}
+.pf-pay-btn{width:100%;padding:15px;border-radius:10px;background:var(--acid);color:#08091a;border:none;font-family:var(--font);font-weight:800;font-size:15px;cursor:pointer;transition:opacity .2s}
+.pf-pay-btn:hover{opacity:.88}
+.pf-note{text-align:center;font-size:11px;color:var(--muted);margin-top:12px;line-height:1.6;font-weight:300}
+</style>
+</head>
+<body>
+
+<div class="ambient">
+  <div class="amb-circle amb-1"></div>
+  <div class="amb-circle amb-2"></div>
+  <div class="amb-circle amb-3"></div>
+</div>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <a href="/" class="logo">gr<span>d</span>base</a>
+  <div class="topbar-right">
+    <span class="step-indicator">Project intake — <strong id="phase-label">Getting started</strong></span>
+    <a href="/" class="back-link">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Back
+    </a>
+  </div>
+</div>
+<div class="progress-bar-wrap"><div class="progress-bar-fill" id="progress-bar" style="width:5%"></div></div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- CHAT PANEL -->
+  <div class="chat-panel">
+    <div class="messages" id="messages"></div>
+    <div class="input-area">
+      <div class="chips" id="chips"></div>
+      <div class="input-row">
+        <textarea class="msg-input" id="msg-input" placeholder="Type your answer..." rows="1" onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+        <button class="send-btn" id="send-btn" onclick="sendMessage()" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+        </button>
+      </div>
+      <div class="input-hint">Press <kbd style="background:rgba(168,180,255,.1);border:1px solid var(--border);border-radius:3px;padding:1px 5px;font-size:10px">Enter</kbd> to send · <kbd style="background:rgba(168,180,255,.1);border:1px solid var(--border);border-radius:3px;padding:1px 5px;font-size:10px">Shift+Enter</kbd> for new line</div>
+    </div>
+  </div>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar-panel">
+    <div class="sidebar-section">
+      <div class="sidebar-label">Your config — building live</div>
+      <div class="config-field"><div class="config-key">business_name</div><div class="config-val empty" id="cfg-name">waiting...</div></div>
+      <div class="config-field"><div class="config-key">industry</div><div class="config-val empty" id="cfg-industry">waiting...</div></div>
+      <div class="config-field"><div class="config-key">primary_goal</div><div class="config-val empty" id="cfg-goal">waiting...</div></div>
+      <div class="config-field"><div class="config-key">primary_color</div><div class="config-val empty" id="cfg-color">waiting...</div></div>
+      <div class="config-field"><div class="config-key">theme</div><div class="config-val empty" id="cfg-theme">waiting...</div></div>
+      <div class="config-field"><div class="config-key">features</div><div class="config-val empty" id="cfg-features">waiting...</div></div>
+      <div class="config-field"><div class="config-key">tier</div><div class="config-val empty" id="cfg-tier">waiting...</div></div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">Recommended tier</div>
+      <div class="tier-rec" id="tier-rec">
+        <div class="tier-name-rec" id="rec-name">—</div>
+        <div class="tier-price-rec" id="rec-price">—</div>
+        <div class="tier-why" id="rec-why">—</div>
+      </div>
+      <div style="font-size:12px;color:var(--muted);font-weight:300" id="tier-placeholder">Appears after we understand your needs.</div>
+      <button class="sidebar-pay-btn" id="sidebar-pay-btn" onclick="openPfModal()">Pay deposit now →</button>
+    </div>
+
+    <div class="sidebar-section" id="summary-section" style="display:none">
+      <div class="sidebar-label">Session summary</div>
+      <div id="summary-list"></div>
+    </div>
+  </div>
+</div>
+
+<!-- PAYFAST MODAL -->
+<div class="pf-overlay" id="pf-overlay">
+  <div class="pf-modal">
+    <button class="pf-close" onclick="closePfModal()">✕</button>
+    <div class="pf-logo">gr<span>d</span>base</div>
+    <div class="pf-summary">
+      <div class="pf-row"><span class="pf-row-key">Tier</span><span class="pf-row-val" id="pf-tier-label">—</span></div>
+      <div class="pf-row"><span class="pf-row-key">Deposit (50%)</span><span class="pf-row-val big" id="pf-amount-label">—</span></div>
+      <div style="border-top:1px solid var(--border);margin-top:10px;padding-top:10px;font-size:11px;color:var(--muted);font-weight:300">Balance due before go-live.</div>
+    </div>
+    <div class="pf-input-wrap">
+      <div>
+        <div class="pf-label">Your name</div>
+        <input class="pf-input" id="pf-name" type="text" placeholder="Full name" autocomplete="name">
+      </div>
+      <div>
+        <div class="pf-label">Email address</div>
+        <input class="pf-input" id="pf-email-input" type="email" placeholder="you@yourbusiness.co.za" autocomplete="email">
+      </div>
+    </div>
+    <form id="payfast-form" action="https://sandbox.payfast.co.za/eng/process" method="POST" style="display:none">
+      <input type="hidden" name="merchant_id"   value="10000100">
+      <input type="hidden" name="merchant_key"  value="46f0cd694581a">
+      <input type="hidden" name="return_url"    value="https://grdbase.co.za/thank-you.html">
+      <input type="hidden" name="cancel_url"    value="https://grdbase.co.za/start.html">
+      <input type="hidden" name="notify_url"    value="https://grdbase.co.za/.netlify/functions/payfast-notify">
+      <input type="hidden" name="name_first"    id="pf-first">
+      <input type="hidden" name="name_last"     id="pf-last">
+      <input type="hidden" name="email_address" id="pf-email-hidden">
+      <input type="hidden" name="m_payment_id"  id="pf-pid">
+      <input type="hidden" name="amount"        id="pf-amt">
+      <input type="hidden" name="item_name"     id="pf-iname">
+      <input type="hidden" name="item_description" id="pf-idesc">
+      <input type="hidden" name="sandbox"       value="true">
+    </form>
+    <button class="pf-pay-btn" onclick="submitPf()">Pay securely via PayFast</button>
+    <div class="pf-note">Redirects to PayFast secure checkout.<br>Visa · Mastercard · EFT · SnapScan · Ozow</div>
+  </div>
+</div>
+
+<script>
+// ── State ─────────────────────────────────────────────────
+const state = {
+  phase: 0,
+  collecting: {},
+  conversationHistory: [],
+  tierSelected: null,
+  tierAmountCents: 0,
+  isWaiting: false
+};
+
+const TIERS = {
+  brochure:  { name:'Brochure',   price:'R4,500',  deposit:'R2,250', cents:225000 },
+  commerce:  { name:'Commerce',   price:'R9,500',  deposit:'R4,750', cents:475000 },
+  fullstack: { name:'Full stack', price:'R16,500', deposit:'R8,250', cents:825000 }
+};
+
+const SYSTEM_PROMPT = `You are the Grdbase intake agent — a sharp, direct web strategist for a South African web systems company. You're collecting information to build a client's website configuration.
+
+PERSONALITY: Confident. Minimal. No fluff. You get to the point. You're warm but not gushing. You speak like a senior SA product person, not a customer service bot. Never say "Great!", "Awesome!", "Certainly!" or anything corporate. Occasionally use dry wit.
+
+YOUR JOB: Have a natural conversation to collect this information in order:
+1. Business name and what they do (one question)
+2. What they sell and who buys it
+3. Their primary goal (sell products / generate leads / showcase work / build community)
+4. Their brand personality — ask for 3 adjectives
+5. Colour preference — ask for a primary colour (HEX or description)
+6. Dark or light theme preference (mention dark is your default and looks better for most SA product brands)
+7. Features they need — ask if they need: e-commerce/cart, PayFast payments, courier/shipping, loyalty programme. Keep it conversational not a checkbox list.
+8. Do they have copy and product photography ready?
+9. Timeline urgency
+
+After collecting all info, do two things:
+A) Recommend a tier (brochure/commerce/fullstack) with a one-sentence reason
+B) Output a JSON block at the very end of your message in this exact format:
+{"_config":{"business_name":"...","industry":"...","primary_goal":"...","primary_color":"...","theme":"dark|light","features":["cart","payfast","shipping","loyalty"],"tier":"brochure|commerce|fullstack","copy_ready":true|false,"timeline":"asap|2-4weeks|flexible"}}
+
+RULES:
+- Ask maximum ONE question at a time
+- Keep messages under 80 words unless summarising at the end
+- When the client gives short answers, affirm briefly and move on
+- If they seem unsure about features, help them decide based on what they've told you
+- SA context: PayFast is the local payment gateway, TCG is the courier integration
+- The three tiers: Brochure (R4,500 — static site), Commerce (R9,500 — cart+PayFast+TCG), Full stack (R16,500 — Commerce + Supabase + loyalty + customer accounts)
+- Once you have enough to recommend, make the call. Don't over-collect.
+- Be decisive. If they say "I'm not sure", give them a recommendation.`;
+
+// ── DOM helpers ───────────────────────────────────────────
+const $msgs   = document.getElementById('messages');
+const $input  = document.getElementById('msg-input');
+const $send   = document.getElementById('send-btn');
+const $chips  = document.getElementById('chips');
+const $prog   = document.getElementById('progress-bar');
+const $phase  = document.getElementById('phase-label');
+
+function scrollBottom() {
+  setTimeout(() => $msgs.scrollTop = $msgs.scrollHeight, 50);
+}
+
+function setProgress(pct, label) {
+  $prog.style.width = pct + '%';
+  if (label) $phase.textContent = label;
+}
+
+function addMessage(role, text, animate = true) {
+  const isAgent = role === 'agent';
+  const wrap = document.createElement('div');
+  wrap.className = 'msg ' + (isAgent ? '' : 'user');
+  if (!animate) wrap.style.animationDuration = '0s';
+
+  const av = document.createElement('div');
+  av.className = 'avatar ' + (isAgent ? 'agent' : 'user');
+  av.textContent = isAgent ? 'GD' : 'You';
+
+  const bubble = document.createElement('div');
+  bubble.className = 'bubble ' + (isAgent ? 'agent' : 'user');
+  bubble.innerHTML = formatMessage(text);
+
+  wrap.appendChild(av);
+  wrap.appendChild(bubble);
+  $msgs.appendChild(wrap);
+  scrollBottom();
+  return bubble;
+}
+
+function formatMessage(text) {
+  return text
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/`(.*?)`/g, '<code style="font-family:var(--mono);font-size:12px;background:rgba(168,180,255,.1);padding:1px 5px;border-radius:3px">$1</code>')
+    .replace(/\n/g, '<br>');
+}
+
+function showTyping() {
+  const wrap = document.createElement('div');
+  wrap.className = 'msg';
+  wrap.id = 'typing';
+  wrap.innerHTML = `
+    <div class="avatar agent">GD</div>
+    <div class="bubble agent">
+      <div class="typing-indicator">
+        <div class="typing-dot"></div>
+        <div class="typing-dot"></div>
+        <div class="typing-dot"></div>
+      </div>
+    </div>`;
+  $msgs.appendChild(wrap);
+  scrollBottom();
+}
+
+function removeTyping() {
+  const t = document.getElementById('typing');
+  if (t) t.remove();
+}
+
+function setChips(chips) {
+  $chips.innerHTML = '';
+  chips.forEach(c => {
+    const btn = document.createElement('button');
+    btn.className = 'chip' + (c.acid ? ' acid-chip' : '');
+    btn.textContent = c.label;
+    btn.onclick = () => { $input.value = c.value || c.label; sendMessage(); };
+    $chips.appendChild(btn);
+  });
+}
+
+// ── Config sidebar updates ────────────────────────────────
+function updateConfig(key, value) {
+  const el = document.getElementById('cfg-' + key);
+  if (!el) return;
+  el.textContent = value;
+  el.className = 'config-val filled';
+  state.collecting[key] = value;
+}
+
+function showTierRec(tierKey) {
+  const t = TIERS[tierKey];
+  if (!t) return;
+  state.tierSelected = tierKey;
+  state.tierAmountCents = t.cents;
+
+  document.getElementById('rec-name').textContent  = t.name + ' tier';
+  document.getElementById('rec-price').textContent = t.deposit + ' deposit';
+  document.getElementById('rec-why').textContent   = 'Total: ' + t.price + ' · 50% due now';
+  document.getElementById('tier-rec').classList.add('visible');
+  document.getElementById('tier-placeholder').style.display = 'none';
+  document.getElementById('sidebar-pay-btn').classList.add('visible');
+
+  document.getElementById('pf-tier-label').textContent  = t.name + ' tier';
+  document.getElementById('pf-amount-label').textContent = t.deposit;
+  document.getElementById('pf-amt').value = (t.cents / 100).toFixed(2);
+  document.getElementById('pf-iname').value = 'Grdbase ' + t.name + ' deposit';
+}
+
+function buildSummary() {
+  const c = state.collecting;
+  const sec = document.getElementById('summary-section');
+  const list = document.getElementById('summary-list');
+  const items = [
+    ['Business',  c.name || '—'],
+    ['Industry',  c.industry || '—'],
+    ['Goal',      c.goal || '—'],
+    ['Theme',     c.theme || '—'],
+    ['Features',  c.features || '—'],
+    ['Tier',      c.tier || '—'],
+  ];
+  list.innerHTML = items.map(([k,v]) => `
+    <div class="summary-item">
+      <span class="summary-key">${k}</span>
+      <span class="summary-val">${v}</span>
+    </div>`).join('');
+  sec.style.display = 'block';
+}
+
+// ── Extract config from Claude response ───────────────────
+function extractAndApplyConfig(text) {
+  const match = text.match(/\{"_config":\{[\s\S]*?\}\}/);
+  if (!match) return text;
+  try {
+    const parsed = JSON.parse(match[0]);
+    const cfg = parsed._config;
+    if (cfg.business_name)  updateConfig('name',     cfg.business_name);
+    if (cfg.industry)       updateConfig('industry',  cfg.industry);
+    if (cfg.primary_goal)   updateConfig('goal',      cfg.primary_goal);
+    if (cfg.primary_color)  updateConfig('color',     cfg.primary_color);
+    if (cfg.theme)          updateConfig('theme',     cfg.theme);
+    if (cfg.features)       updateConfig('features',  cfg.features.join(', ') || 'brochure only');
+    if (cfg.tier) {
+      updateConfig('tier', cfg.tier);
+      showTierRec(cfg.tier);
+      buildSummary();
+      setProgress(100, 'Complete — ready to pay');
+    }
+  } catch(e) {}
+  // Remove the JSON block from displayed message
+  return text.replace(/\{"_config":\{[\s\S]*?\}\}/, '').trim();
+}
+
+// ── API call ──────────────────────────────────────────────
+async function callClaude(userMessage) {
+  state.isWaiting = true;
+  $send.disabled = true;
+  $input.disabled = true;
+  $chips.innerHTML = '';
+  showTyping();
+
+  state.conversationHistory.push({ role:'user', content: userMessage });
+
+  try {
+    // Routes through Netlify Function — API key stays server-side
+    const res = await fetch('/.netlify/functions/claude-intake', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        system: SYSTEM_PROMPT,
+        messages: state.conversationHistory
+      })
+    });
+
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'API error');
+    const raw  = data.content?.[0]?.text || "Something went wrong — please refresh and try again.";
+    const clean = extractAndApplyConfig(raw);
+
+    removeTyping();
+    state.conversationHistory.push({ role:'assistant', content: raw });
+    addMessage('agent', clean);
+
+    // Update progress based on conversation length
+    const len = state.conversationHistory.filter(m => m.role === 'user').length;
+    if (len === 1) setProgress(10, 'Business info');
+    else if (len === 2) setProgress(25, 'Your audience');
+    else if (len === 3) setProgress(40, 'Brand & tone');
+    else if (len === 4) setProgress(55, 'Features');
+    else if (len === 5) setProgress(70, 'Content & timeline');
+    else if (len >= 6)  setProgress(85, 'Wrapping up');
+
+    // Offer quick chips contextually
+    if (len === 1) setChips([{label:'Food & beverage'},{label:'Skincare & beauty'},{label:'Apparel'},{label:'Professional services'}]);
+    else if (len === 3) setChips([{label:'Dark (recommended)',acid:true},{label:'Light'}]);
+    else if (len === 4) setChips([{label:'Cart + PayFast + shipping',acid:true},{label:'Just a brochure site'},{label:'Full stack with loyalty',acid:true}]);
+
+  } catch(err) {
+    removeTyping();
+    addMessage('agent', "Something went wrong on my end. Try refreshing, or email us at **hello@grdbase.co.za**");
+    console.error(err);
+  }
+
+  state.isWaiting = false;
+  $send.disabled = false;
+  $input.disabled = false;
+  $input.focus();
+}
+
+// ── Send ──────────────────────────────────────────────────
+function sendMessage() {
+  const text = $input.value.trim();
+  if (!text || state.isWaiting) return;
+  $input.value = '';
+  autoResize($input);
+  addMessage('user', text);
+  callClaude(text);
+}
+
+function handleKey(e) {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    sendMessage();
+  }
+  $send.disabled = !$input.value.trim();
+}
+
+function autoResize(el) {
+  el.style.height = 'auto';
+  el.style.height = Math.min(el.scrollHeight, 140) + 'px';
+  $send.disabled = !el.value.trim();
+}
+
+// ── PayFast modal ─────────────────────────────────────────
+function openPfModal() {
+  // Pre-fill name/email if collected during chat
+  const n = state.collecting.name || '';
+  if (n) document.getElementById('pf-name').value = n;
+  document.getElementById('pf-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closePfModal() {
+  document.getElementById('pf-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('pf-overlay').addEventListener('click', function(e){
+  if (e.target === this) closePfModal();
+});
+
+function submitPf() {
+  const fullName = document.getElementById('pf-name').value.trim();
+  const email    = document.getElementById('pf-email-input').value.trim();
+  if (!fullName || !email) { alert('Please enter your name and email.'); return; }
+  const parts = fullName.split(' ');
+  const pid   = 'GRD-' + Date.now();
+  const t     = TIERS[state.tierSelected] || TIERS.brochure;
+
+  document.getElementById('pf-first').value      = parts[0];
+  document.getElementById('pf-last').value       = parts.slice(1).join(' ') || '-';
+  document.getElementById('pf-email-hidden').value = email;
+  document.getElementById('pf-pid').value        = pid;
+  document.getElementById('pf-idesc').value      = 'Grdbase ' + t.name + ' deposit. Payment ID: ' + pid;
+
+  document.getElementById('payfast-form').submit();
+}
+
+// ── Boot ──────────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded', () => {
+  $input.focus();
+  $input.addEventListener('input', () => { $send.disabled = !$input.value.trim(); });
+
+  // Opening agent message — no API call needed
+  setTimeout(() => {
+    addMessage('agent', "Hey — I'm the Grdbase intake agent.\n\nI'll ask you a few questions about your business and we'll have your site config and a tier recommendation ready in under 10 minutes. You can pay your deposit right here at the end.\n\nLet's start simple: **what's your business name and what do you do?**");
+    setChips([]);
+    setProgress(5, 'Getting started');
+  }, 400);
+});
+</script>
+</body>
+</html>
