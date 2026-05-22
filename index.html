@@ -198,17 +198,17 @@ hr.div{border:none;border-top:1px solid var(--border);margin-bottom:20px}
 .tier-features li{font-size:13px;color:var(--lavender);display:flex;align-items:flex-start;gap:9px;font-weight:300}
 .tier-features li::before{content:'✓';color:var(--acid);font-weight:700;flex-shrink:0;font-size:11px;margin-top:3px}
 .tier-btn{width:100%;padding:12px;border-radius:8px;font-family:var(--font);font-weight:500;font-size:13px;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--lavender);transition:all .2s}
-.tier-card.featured .tier-btn{background:var(--acid);color:#08091a;border-color:var(--acid);font-weight:700}
+.tier-card.featured .tier-btn{background:transparent;color:var(--lavender);border-color:var(--border);font-weight:500}
 .tier-btn:hover{background:rgba(168,180,255,.1);color:#fff}
-.tier-card.featured .tier-btn:hover{opacity:.88}
+.tier-card.featured .tier-btn:hover{background:rgba(168,180,255,.1);color:#fff}
 .tier-actions{display:flex;flex-direction:column;gap:8px;margin-top:auto}
 .tier-deposit-label{font-size:12px;color:var(--muted);margin-bottom:4px;font-weight:300}
 .tier-deposit-label strong{color:var(--lavender);font-weight:600}
 .tier-pay-btn{padding:12px;border-radius:8px;font-family:var(--font);font-weight:700;font-size:13px;cursor:pointer;border:none;background:rgba(225,255,1,.12);color:var(--acid);transition:all .2s;border:1px solid rgba(225,255,1,.25)}
 .tier-pay-btn:hover{background:rgba(225,255,1,.2);transform:translateY(-1px)}
-.tier-pay-btn.featured-pay{background:rgba(8,9,26,.3);color:#08091a;border-color:rgba(8,9,26,.2)}
-.tier-card.featured .tier-pay-btn.featured-pay{background:rgba(8,9,26,.25);color:#08091a;border:1px solid rgba(8,9,26,.3)}
-.tier-pay-btn.featured-pay:hover{background:rgba(8,9,26,.4)}
+.tier-pay-btn.featured-pay{background:rgba(225,255,1,.15);color:var(--acid);border:1px solid rgba(225,255,1,.35)}
+.tier-card.featured .tier-pay-btn.featured-pay{background:rgba(225,255,1,.15);color:var(--acid);border:1px solid rgba(225,255,1,.35)}
+.tier-pay-btn.featured-pay:hover{background:rgba(225,255,1,.25);transform:translateY(-1px)}
 .add-ons{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
 .pill{background:rgba(168,180,255,.06);border:1px solid var(--border);border-radius:100px;padding:8px 16px;font-size:12px;font-weight:400;color:var(--lavender);display:flex;align-items:center;gap:7px}
 .pill.y{border-color:rgba(225,255,1,.2);color:rgba(225,255,1,.8)}
@@ -476,8 +476,8 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;align-i
         <li>Order confirmation emails</li>
       </ul>
       <div class="tier-actions">
-        <button class="tier-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Ask a question</button>
         <button class="tier-pay-btn featured-pay" onclick="openPayModal('Commerce', 475000)">Pay deposit</button>
+        <button class="tier-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Ask a question</button>
       </div>
     </div>
     <div class="tier-card">
