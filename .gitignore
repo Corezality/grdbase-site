@@ -1,20 +1,2 @@
-# OS files
-.DS_Store
-Thumbs.db
-desktop.ini
-
-# Editor
-.vscode\
-.idea\
-
-# Logs
-*.log
-
-# NEVER commit secrets
-.env
-.env.local
-*.env
-secrets.json
-
-# This setup file — delete it after use
-git-setup-grdbase.bat
+# Local Netlify folder
+.netlify
