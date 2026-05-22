@@ -197,14 +197,15 @@ hr.div{border:none;border-top:1px solid var(--border);margin-bottom:20px}
 .tier-features{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
 .tier-features li{font-size:13px;color:var(--lavender);display:flex;align-items:flex-start;gap:9px;font-weight:300}
 .tier-features li::before{content:'✓';color:var(--acid);font-weight:700;flex-shrink:0;font-size:11px;margin-top:3px}
-.tier-btn{width:100%;padding:12px;border-radius:8px;font-family:var(--font);font-weight:500;font-size:13px;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--lavender);transition:all .2s}
+.tier-btn{width:100%;padding:12px;border-radius:8px;font-family:var(--font);font-weight:500;font-size:12px;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--lavender);transition:all .2s}
 .tier-card.featured .tier-btn{background:var(--acid);color:#08091a;border-color:var(--acid);font-weight:700}
 .tier-btn:hover{background:rgba(168,180,255,.1);color:#fff}
 .tier-card.featured .tier-btn:hover{opacity:.88}
 .tier-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:auto}
+@media(max-width:360px){.tier-actions{grid-template-columns:1fr}}
 .tier-deposit-label{font-size:12px;color:var(--muted);margin-bottom:4px;font-weight:300}
 .tier-deposit-label strong{color:var(--lavender);font-weight:600}
-.tier-pay-btn{padding:12px;border-radius:8px;font-family:var(--font);font-weight:700;font-size:13px;cursor:pointer;border:none;background:rgba(225,255,1,.12);color:var(--acid);transition:all .2s;border:1px solid rgba(225,255,1,.25)}
+.tier-pay-btn{padding:12px;border-radius:8px;font-family:var(--font);font-weight:700;font-size:12px;cursor:pointer;border:none;background:rgba(225,255,1,.12);color:var(--acid);transition:all .2s;border:1px solid rgba(225,255,1,.25);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .tier-pay-btn:hover{background:rgba(225,255,1,.2);transform:translateY(-1px)}
 .tier-pay-btn.featured-pay{background:rgba(8,9,26,.3);color:#08091a;border-color:rgba(8,9,26,.2)}
 .tier-card.featured .tier-pay-btn.featured-pay{background:rgba(8,9,26,.25);color:#08091a;border:1px solid rgba(8,9,26,.3)}
