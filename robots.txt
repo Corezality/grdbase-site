@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /delivery.html
+Disallow: /thank-you.html
+
+Sitemap: https://grdbase.co.za/sitemap.xml

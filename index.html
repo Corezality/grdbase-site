@@ -6,8 +6,8 @@
 
 <!-- ── Primary SEO ───────────────────────────────────────── -->
 <title>Grdbase — Web Systems for SA Commerce | PayFast · TCG · Loyalty</title>
-<meta name="description" content="Production-ready web systems for South African product businesses. PayFast payments, TCG courier integration, and loyalty programmes built in. Live in 2 weeks.">
-<meta name="keywords" content="web development South Africa, PayFast integration, TCG courier, e-commerce SA, web system, Grdbase, Corezality">
+<meta name="description" content="Grdbase builds production-ready websites for South African product businesses. PayFast checkout, TCG courier integration, loyalty programmes, and Supabase backend — live in 2 weeks, not 3 months. Based in South Africa.">
+<meta name="keywords" content="web development South Africa, website design South Africa, PayFast integration, TCG courier integration, e-commerce South Africa, web system SA, Grdbase, Corezality, web agency Johannesburg, loyalty programme website, Supabase South Africa, small business website SA, online store South Africa">
 <meta name="author" content="Corezality PTY Ltd">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://grdbase.co.za/">
@@ -16,7 +16,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://grdbase.co.za/">
 <meta property="og:title" content="Grdbase — Web Systems for SA Commerce">
-<meta property="og:description" content="PayFast. TCG shipping. Loyalty. Production-ready in 2 weeks — not 3 months.">
+<meta property="og:description" content="Production-ready websites for South African product businesses. PayFast, TCG courier, and loyalty programmes built in from day one. Live in 2 weeks.">
 <meta property="og:image" content="https://grdbase.co.za/assets/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -26,7 +26,7 @@
 <!-- ── Twitter / X card ─────────────────────────────────── -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Grdbase — Web Systems for SA Commerce">
-<meta name="twitter:description" content="PayFast. TCG shipping. Loyalty. Production-ready in 2 weeks.">
+<meta name="twitter:description" content="Production-ready websites for South African product businesses. PayFast, TCG courier, loyalty — live in 2 weeks.">
 <meta name="twitter:image" content="https://grdbase.co.za/assets/og-image.jpg">
 
 <!-- ── Structured data (JSON-LD) ────────────────────────── -->
@@ -37,39 +37,68 @@
   "name": "Grdbase",
   "legalName": "Corezality PTY Ltd",
   "url": "https://grdbase.co.za",
-  "logo": "https://grdbase.co.za/assets/logo.png",
-  "description": "Production-ready web systems for South African product businesses. PayFast, TCG courier, and loyalty programmes built in.",
+  "logo": "https://grdbase.co.za/assets/logo.svg",
+  "image": "https://grdbase.co.za/assets/og-image.jpg",
+  "description": "Production-ready website systems for South African product businesses. PayFast payments, TCG courier integration, loyalty programmes, and Supabase backends built in from day one.",
   "email": "hello@grdbase.co.za",
   "address": {
     "@type": "PostalAddress",
-    "addressCountry": "ZA"
+    "addressCountry": "ZA",
+    "addressRegion": "Gauteng"
   },
-  "areaServed": "ZA",
+  "areaServed": {
+    "@type": "Country",
+    "name": "South Africa"
+  },
   "priceRange": "R4500–R16500",
   "currenciesAccepted": "ZAR",
+  "paymentAccepted": "PayFast, EFT",
+  "knowsAbout": ["Web development", "E-commerce", "PayFast integration", "TCG courier", "Supabase", "Netlify", "Loyalty programmes"],
+  "sameAs": [],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "Web system tiers",
     "itemListElement": [
       {
         "@type": "Offer",
-        "itemOffered": { "@type": "Service", "name": "Brochure site" },
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Brochure website",
+          "description": "Single-page website with 5-6 sections, contact form, email CTA, and Netlify hosting. Ideal for service businesses and professional firms."
+        },
         "price": "4500",
-        "priceCurrency": "ZAR"
+        "priceCurrency": "ZAR",
+        "eligibleRegion": { "@type": "Country", "name": "South Africa" }
       },
       {
         "@type": "Offer",
-        "itemOffered": { "@type": "Service", "name": "Commerce site" },
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Commerce website",
+          "description": "Full e-commerce site with shopping cart, PayFast payment gateway, TCG courier integration, and order confirmation emails."
+        },
         "price": "9500",
-        "priceCurrency": "ZAR"
+        "priceCurrency": "ZAR",
+        "eligibleRegion": { "@type": "Country", "name": "South Africa" }
       },
       {
         "@type": "Offer",
-        "itemOffered": { "@type": "Service", "name": "Full stack site" },
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Full stack website",
+          "description": "Complete web system with Supabase backend, customer accounts, loyalty and rewards programme, and transactional email suite."
+        },
         "price": "16500",
-        "priceCurrency": "ZAR"
+        "priceCurrency": "ZAR",
+        "eligibleRegion": { "@type": "Country", "name": "South Africa" }
       }
     ]
+  },
+  "review": {
+    "@type": "Review",
+    "author": { "@type": "Person", "name": "Dentzel Grootboom" },
+    "reviewBody": "The system handles everything — PayFast checkout, TCG courier rates, loyalty points, magic link auth. Grdbase had us live in two weeks with a stack no template tool can touch.",
+    "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
   }
 }
 </script>
@@ -93,6 +122,117 @@
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:16px;line-height:1.6;overflow-x:hidden;font-weight:300}
 
+
+
+/* ── TEXTURE ── */
+.texture-bg{position:relative}
+.texture-bg::before{
+  content:'';position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size:256px 256px;
+  pointer-events:none;z-index:0;border-radius:inherit;
+}
+.texture-bg > *{position:relative;z-index:1}
+
+/* ── PROCESS CARDS (Replit style) ── */
+.how{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.process-cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;margin-top:56px;
+}
+.process-card{
+  border-radius:16px;padding:28px 24px 24px;
+  display:flex;flex-direction:column;gap:0;
+  border:1px solid var(--border);
+  position:relative;overflow:hidden;
+  min-height:360px;
+}
+.process-card::before{
+  content:'';position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;
+}
+.process-card > *{position:relative;z-index:1}
+.process-card.c1{background:linear-gradient(145deg,#0f1630,#0a0d22)}
+.process-card.c2{background:linear-gradient(145deg,#130f2a,#0d0a1e)}
+.process-card.c3{background:linear-gradient(145deg,#0a1a12,#060f0a)}
+.process-card.c4{background:linear-gradient(145deg,rgba(225,255,1,.06),#0a0b14)}
+
+.pc-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:10px}
+.pc-heading{font-weight:800;font-size:clamp(20px,2.5vw,26px);color:#fff;letter-spacing:-0.5px;line-height:1.1;margin-bottom:auto}
+.process-card.c4 .pc-heading{color:var(--acid)}
+
+.pc-visual{
+  margin:20px 0;flex:1;
+  display:flex;align-items:center;justify-content:center;
+  min-height:120px;
+}
+
+/* visual elements per card */
+.pcv-form{
+  background:rgba(168,180,255,.06);border:1px solid var(--border);
+  border-radius:10px;padding:14px;width:100%;
+}
+.pcv-field{height:8px;border-radius:4px;background:rgba(168,180,255,.15);margin-bottom:8px}
+.pcv-field.short{width:60%}
+.pcv-field.med{width:80%}
+.pcv-field.full{width:100%}
+.pcv-field.acid{background:rgba(225,255,1,.3)}
+.pcv-btn{
+  margin-top:12px;background:var(--acid);color:#08091a;
+  border-radius:6px;padding:8px 14px;font-size:10px;font-weight:700;
+  display:inline-block;
+}
+
+.pcv-config{
+  background:rgba(8,9,26,.6);border:1px solid var(--border);
+  border-radius:10px;padding:12px 14px;width:100%;font-family:'JetBrains Mono',monospace;
+  font-size:9px;line-height:1.8;
+}
+.pcv-config .key{color:var(--purple)}
+.pcv-config .val{color:var(--acid)}
+.pcv-config .str{color:#4ade80}
+.pcv-config .muted{color:var(--muted)}
+
+.pcv-preview{
+  width:100%;border:1px solid var(--border);border-radius:10px;overflow:hidden;
+}
+.pcv-preview-bar{
+  background:rgba(8,9,26,.8);padding:6px 10px;
+  display:flex;align-items:center;gap:6px;border-bottom:1px solid var(--border);
+}
+.pcv-preview-dot{width:5px;height:5px;border-radius:50%}
+.pcv-preview-url{flex:1;background:rgba(168,180,255,.06);border-radius:3px;height:5px;margin-left:4px}
+.pcv-preview-body{padding:10px;background:linear-gradient(135deg,#05060f,#0a0b1a)}
+.pcv-preview-h{font-size:9px;font-weight:800;color:#fff;margin-bottom:4px}
+.pcv-preview-sub{font-size:7px;color:var(--muted);margin-bottom:8px}
+.pcv-preview-btns{display:flex;gap:4px}
+.pcv-preview-btn1{background:var(--acid);color:#08091a;font-size:6px;font-weight:700;padding:3px 7px;border-radius:3px}
+.pcv-preview-btn2{border:1px solid var(--border);color:var(--muted);font-size:6px;padding:3px 7px;border-radius:3px}
+
+.pcv-launch{
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+}
+.pcv-domain{
+  background:rgba(225,255,1,.08);border:1px solid rgba(225,255,1,.2);
+  border-radius:8px;padding:8px 16px;font-size:10px;color:var(--acid);
+  font-family:'JetBrains Mono',monospace;font-weight:500;
+}
+.pcv-check{
+  width:40px;height:40px;border-radius:50%;
+  background:rgba(225,255,1,.1);border:1px solid rgba(225,255,1,.3);
+  display:flex;align-items:center;justify-content:center;
+}
+.pcv-pulse{
+  width:60px;height:60px;border-radius:50%;
+  border:1px solid rgba(225,255,1,.15);
+  display:flex;align-items:center;justify-content:center;
+  animation:pulseRing 2s ease-in-out infinite;
+}
+@keyframes pulseRing{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.08);opacity:1}}
+
+.pc-desc{font-size:12px;color:var(--muted);line-height:1.65;font-weight:300;margin-top:16px}
 
 /* ── PORTFOLIO ── */
 .portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:24px;margin-top:56px}
@@ -323,11 +463,11 @@ hr.div{border:none;border-top:1px solid var(--border);margin-bottom:20px}
 .tier-actions{display:flex;flex-direction:column;gap:8px;margin-top:auto}
 .tier-deposit-label{font-size:12px;color:var(--muted);margin-bottom:4px;font-weight:300}
 .tier-deposit-label strong{color:var(--lavender);font-weight:600}
-.tier-pay-btn{padding:12px;border-radius:8px;font-family:var(--font);font-weight:700;font-size:13px;cursor:pointer;border:none;background:rgba(225,255,1,.12);color:var(--acid);transition:all .2s;border:1px solid rgba(225,255,1,.25)}
-.tier-pay-btn:hover{background:rgba(225,255,1,.2);transform:translateY(-1px)}
-.tier-pay-btn.featured-pay{background:rgba(225,255,1,.15);color:var(--acid);border:1px solid rgba(225,255,1,.35)}
-.tier-card.featured .tier-pay-btn.featured-pay{background:rgba(225,255,1,.15);color:var(--acid);border:1px solid rgba(225,255,1,.35)}
-.tier-pay-btn.featured-pay:hover{background:rgba(225,255,1,.25);transform:translateY(-1px)}
+.tier-pay-btn{padding:12px;border-radius:8px;font-family:var(--font);font-weight:700;font-size:13px;cursor:pointer;border:none;background:var(--acid);color:#08091a;transition:all .2s}
+.tier-pay-btn:hover{background:#d4e800;transform:translateY(-1px);box-shadow:0 6px 24px rgba(225,255,1,.2)}
+.tier-pay-btn.featured-pay{background:var(--acid);color:#08091a}
+.tier-card.featured .tier-pay-btn.featured-pay{background:var(--acid);color:#08091a}
+.tier-pay-btn.featured-pay:hover{background:#d4e800;transform:translateY(-1px);box-shadow:0 6px 24px rgba(225,255,1,.2)}
 .add-ons{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
 .pill{background:rgba(168,180,255,.06);border:1px solid var(--border);border-radius:100px;padding:8px 16px;font-size:12px;font-weight:400;color:var(--lavender);display:flex;align-items:center;gap:7px}
 .pill.y{border-color:rgba(225,255,1,.2);color:rgba(225,255,1,.8)}
@@ -409,7 +549,7 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;align-i
 .footer-legal{font-size:11px;color:rgba(120,128,168,.45);font-weight:300}
 
 /* ── POPIA MODAL ── */
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(8,9,26,.85);z-index:200;align-items:center;justify-content:center;padding:24px}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(8,9,26,.92);z-index:200;align-items:center;justify-content:center;padding:24px;-webkit-overflow-scrolling:touch}
 .modal-overlay.open{display:flex}
 .modal{background:var(--bg2);border:1px solid var(--border);border-radius:18px;padding:40px;max-width:620px;width:100%;max-height:80vh;overflow-y:auto;position:relative}
 .modal h2{font-weight:800;font-size:22px;color:#fff;margin-bottom:6px;letter-spacing:-0.5px}
@@ -429,9 +569,10 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;align-i
   max-width:720px;width:calc(100% - 48px);
   z-index:150;box-shadow:0 16px 48px rgba(0,0,0,.5);
   animation:slideUp .4s ease;
+  -webkit-backdrop-filter:none;backdrop-filter:none;
 }
 @keyframes slideUp{from{opacity:0;transform:translateX(-50%) translateY(20px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
-.cookie-banner.hidden{display:none}
+.cookie-banner.hidden{display:none!important;visibility:hidden!important;pointer-events:none!important}
 .cookie-text{font-size:12px;color:var(--muted);font-weight:300;line-height:1.55;flex:1;min-width:200px}
 .cookie-text a{color:var(--lavender);text-decoration:underline;text-underline-offset:2px;cursor:pointer}
 .cookie-actions{display:flex;gap:8px;flex-shrink:0}
@@ -561,7 +702,7 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;align-i
 <!-- ── TIERS ─────────────────────────────────────────────── -->
 <section class="section" id="tiers">
   <div class="section-label">Pricing</div>
-  <div class="section-heading">Three tiers.<br>One system.</div>
+  <h2 class="section-heading">Three tiers.<br>One system.</h2>
   <p class="section-sub">Pick your tier. We configure, theme, and deploy. You launch.</p>
   <div class="tiers-grid">
     <div class="tier-card">
@@ -630,20 +771,92 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;align-i
 <!-- ── HOW ───────────────────────────────────────────────── -->
 <section class="section how" id="how">
   <div class="section-label">Process</div>
-  <div class="section-heading">Questionnaire<br>to live site.</div>
-  <p class="section-sub">A repeatable system. No surprises. No scope creep.</p>
-  <div class="steps">
-    <div class="step"><div class="step-num">01</div><div class="step-title">Fill the questionnaire</div><div class="step-body">Brand, products, colours, copy. 20 minutes. This locks your scope and timeline.</div></div>
-    <div class="step"><div class="step-num">02</div><div class="step-title">We configure + build</div><div class="step-body">We process your answers, theme the system to your brand, and start building.</div></div>
-    <div class="step"><div class="step-num">03</div><div class="step-title">Preview and refine</div><div class="step-body">You get a live preview link. Up to two revision rounds included in every tier.</div></div>
-    <div class="step"><div class="step-num">04</div><div class="step-title">Launch</div><div class="step-body">Domain pointed. Balance paid. You're live. Retainer available if you want us to stay on.</div></div>
+  <h2 class="section-heading">Questionnaire<br>to live site.</h2>
+  <p class="section-sub">Four steps. Zero guesswork. No scope creep.</p>
+
+  <div class="process-cards">
+
+    <div class="process-card c1">
+      <div class="pc-label">Step 01 — Intake</div>
+      <div class="pc-heading">Fill the questionnaire.</div>
+      <div class="pc-visual">
+        <div class="pcv-form">
+          <div class="pcv-field short"></div>
+          <div class="pcv-field med"></div>
+          <div class="pcv-field full"></div>
+          <div class="pcv-field short acid"></div>
+          <div class="pcv-field med"></div>
+          <div class="pcv-btn">Submit →</div>
+        </div>
+      </div>
+      <div class="pc-desc">Brand, products, colours, copy. 20 minutes. This locks your scope, timeline, and protects both parties.</div>
+    </div>
+
+    <div class="process-card c2">
+      <div class="pc-label">Step 02 — Build</div>
+      <div class="pc-heading">We configure &amp; build.</div>
+      <div class="pc-visual">
+        <div class="pcv-config">
+          <div><span class="muted">{</span></div>
+          <div>&nbsp;&nbsp;<span class="key">"brand"</span><span class="muted">: {</span></div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"name"</span><span class="muted">: </span><span class="str">"Your Co"</span></div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"theme"</span><span class="muted">: </span><span class="str">"dark"</span></div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">"color"</span><span class="muted">: </span><span class="val">"#FF6B00"</span></div>
+          <div>&nbsp;&nbsp;<span class="muted">},</span></div>
+          <div>&nbsp;&nbsp;<span class="key">"tier"</span><span class="muted">: </span><span class="str">"commerce"</span></div>
+          <div><span class="muted">}</span></div>
+        </div>
+      </div>
+      <div class="pc-desc">We process your answers, theme the system to your brand, and build. AI-assisted. Human QA'd.</div>
+    </div>
+
+    <div class="process-card c3">
+      <div class="pc-label">Step 03 — Preview</div>
+      <div class="pc-heading">Review &amp; refine.</div>
+      <div class="pc-visual">
+        <div class="pcv-preview">
+          <div class="pcv-preview-bar">
+            <div class="pcv-preview-dot" style="background:#f87171"></div>
+            <div class="pcv-preview-dot" style="background:#fbbf24"></div>
+            <div class="pcv-preview-dot" style="background:#4ade80"></div>
+            <div class="pcv-preview-url"></div>
+          </div>
+          <div class="pcv-preview-body">
+            <div class="pcv-preview-h">Your business name.</div>
+            <div class="pcv-preview-sub">Your tagline here — live preview link.</div>
+            <div class="pcv-preview-btns">
+              <div class="pcv-preview-btn1">Shop now</div>
+              <div class="pcv-preview-btn2">Learn more</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pc-desc">You get a live Netlify preview URL. Up to two revision rounds included. Anything extra is quoted separately.</div>
+    </div>
+
+    <div class="process-card c4">
+      <div class="pc-label">Step 04 — Launch</div>
+      <div class="pc-heading">Pay balance.<br>Go live.</div>
+      <div class="pc-visual">
+        <div class="pcv-launch">
+          <div class="pcv-pulse">
+            <div class="pcv-check">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--acid)" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            </div>
+          </div>
+          <div class="pcv-domain">yourbusiness.co.za</div>
+        </div>
+      </div>
+      <div class="pc-desc">Domain pointed. Balance paid. You're live. Maintenance retainer available if you want us to stay on.</div>
+    </div>
+
   </div>
 </section>
 
 <!-- ── STACK ─────────────────────────────────────────────── -->
 <section class="section" id="stack">
   <div class="section-label">The stack</div>
-  <div class="section-heading">SA-native<br>by design.</div>
+  <h2 class="section-heading">SA-native<br>by design.</h2>
   <p class="section-sub">PayFast and TCG are baked in — not bolted on. No other agency or template tool has this ready out of the box.</p>
   <div class="stack-grid">
     <div class="stack-pill sa"><span class="dot y"></span>PayFast — SA payments</div>
@@ -662,7 +875,7 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;align-i
 <!-- ── PORTFOLIO ─────────────────────────────────────────── -->
 <section class="section" id="portfolio">
   <div class="section-label">Live work</div>
-  <div class="section-heading">Built on<br>the system.</div>
+  <h2 class="section-heading">Built on<br>the system.</h2>
   <p class="section-sub">Real sites, real clients, real revenue. Every project below runs on the same Grdbase stack.</p>
 
   <div class="portfolio-grid">
@@ -755,7 +968,7 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;align-i
 
 <section class="contact-section" id="contact">
   <div class="section-label">Get in touch</div>
-  <div class="section-heading">Let's talk about<br>your project.</div>
+  <h2 class="section-heading">Let's talk about<br>your project.</h2>
   <div class="contact-inner">
     <div class="email-card">
       <div class="email-label">Direct line</div>

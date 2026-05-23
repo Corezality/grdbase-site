@@ -1,0 +1,117 @@
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#08091a;--bg2:#0d0f26;--purple:#7b6fff;
+  --periwinkle:#a8b4ff;--lavender:#c8cfff;--acid:#e1ff01;
+  --text:#e8eaff;--muted:#7880a8;--border:rgba(168,180,255,0.12);
+  --font:'Sora',system-ui,sans-serif;
+}
+html,body{width:100%;height:100%;overflow:hidden}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:var(--font);font-weight:300;
+  display:flex;align-items:stretch;justify-content:stretch;
+}
+.canvas{
+  position:relative;width:100%;height:100%;
+  overflow:hidden;display:flex;flex-direction:column;
+  padding:72px 80px;
+}
+.canvas.linkedin{padding:56px 72px}
+.glow{
+  position:absolute;width:900px;height:900px;border-radius:50%;
+  background:radial-gradient(circle,rgba(123,111,255,.22) 0%,transparent 68%);
+  top:-20%;left:-15%;pointer-events:none;
+}
+.glow2{
+  position:absolute;width:600px;height:400px;
+  background:radial-gradient(ellipse,rgba(225,255,1,.08) 0%,transparent 70%);
+  bottom:0;right:0;pointer-events:none;
+}
+.top{
+  position:relative;z-index:2;
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:auto;
+}
+.logo{font-weight:800;font-size:42px;letter-spacing:-2px;color:#fff}
+.logo span{color:var(--acid)}
+.badge{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(168,180,255,.08);border:1px solid var(--border);
+  border-radius:100px;padding:10px 22px;
+  font-size:18px;font-weight:600;color:var(--lavender);
+  letter-spacing:.08em;text-transform:uppercase;
+}
+.badge-dot{width:10px;height:10px;border-radius:50%;background:var(--acid);
+  box-shadow:0 0 14px var(--acid)}
+.content{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:center}
+.headline{
+  font-weight:800;line-height:.95;letter-spacing:-3px;color:#fff;
+  max-width:920px;
+}
+.headline.xl{font-size:88px}
+.headline.lg{font-size:76px}
+.headline.md{font-size:64px}
+.headline em{font-style:normal;color:var(--acid)}
+.headline .dim{color:rgba(255,255,255,.35)}
+.sub{
+  margin-top:36px;font-size:30px;font-weight:400;
+  color:var(--muted);line-height:1.5;max-width:780px;
+}
+.sub strong{color:var(--lavender);font-weight:500}
+.pills{display:flex;flex-wrap:wrap;gap:14px;margin-top:40px}
+.pill{
+  background:rgba(168,180,255,.06);border:1px solid var(--border);
+  border-radius:100px;padding:14px 26px;font-size:22px;font-weight:500;color:var(--lavender);
+}
+.pill.sa{border-color:rgba(225,255,1,.28);color:rgba(225,255,1,.85)}
+.footer{
+  position:relative;z-index:2;
+  display:flex;align-items:center;justify-content:space-between;
+  margin-top:auto;padding-top:32px;
+}
+.url{font-size:24px;color:var(--muted);font-weight:500}
+.cta{
+  background:var(--acid);color:var(--bg);
+  padding:18px 32px;border-radius:10px;
+  font-size:22px;font-weight:700;letter-spacing:-.02em;
+}
+.slide-num{
+  font-size:22px;font-weight:700;color:rgba(225,255,1,.5);
+  letter-spacing:.1em;
+}
+/* Pricing layout */
+.pricing-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+  margin-top:48px;position:relative;z-index:2;
+}
+.price-card{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:22px;padding:36px 32px;
+  display:flex;flex-direction:column;min-height:340px;
+}
+.price-card.featured{
+  border-color:rgba(225,255,1,.35);
+  background:linear-gradient(160deg,rgba(225,255,1,.06),var(--bg2) 55%);
+}
+.tier-label{
+  font-size:16px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:12px;
+}
+.tier-name{font-size:28px;font-weight:700;color:#fff;margin-bottom:8px}
+.tier-price{
+  font-size:52px;font-weight:800;color:#fff;
+  letter-spacing:-2px;line-height:1;margin:16px 0;
+}
+.tier-price span{font-size:28px;color:var(--muted);font-weight:500}
+.price-card.featured .tier-price{color:var(--acid)}
+.pricing-title{
+  font-size:52px;font-weight:800;letter-spacing:-2px;color:#fff;
+  line-height:1.05;margin-bottom:8px;
+}
+.pricing-title em{font-style:normal;color:var(--acid)}
+.carousel-icon{
+  width:88px;height:88px;border-radius:20px;
+  background:rgba(123,111,255,.15);border:1px solid rgba(123,111,255,.3);
+  display:flex;align-items:center;justify-content:center;
+  font-size:40px;margin-bottom:32px;
+}
