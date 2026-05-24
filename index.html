@@ -235,7 +235,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:16
 .pc-desc{font-size:12px;color:var(--muted);line-height:1.65;font-weight:300;margin-top:16px}
 
 /* ── PORTFOLIO ── */
-.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:24px;margin-top:56px}
+.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:56px}
 
 .portfolio-card{
   background:var(--bg2);border:1px solid var(--border);
@@ -437,7 +437,7 @@ nav{
 
 /* ── SECTIONS ── */
 .section{padding:100px 48px}
-@media(max-width:700px){.section{padding:72px 20px}}
+@media(max-width:700px){.section{padding:56px 16px}.section-heading{font-size:clamp(26px,8vw,40px)}}
 .section-label{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--acid);font-weight:600;margin-bottom:14px}
 .section-heading{font-weight:800;font-size:clamp(30px,4vw,50px);letter-spacing:-1.5px;color:#fff;margin-bottom:14px;line-height:1.05}
 .section-sub{color:var(--muted);font-size:16px;max-width:460px;font-weight:300;line-height:1.75}
@@ -889,25 +889,32 @@ footer{padding:32px 48px;border-top:1px solid var(--border);display:flex;align-i
         </a>
       </div>
 
-      <div class="portfolio-preview">
-        <div class="portfolio-preview-inner">
-          <div class="pp-nav">
-            <span class="pp-logo">Artifacts Coffee</span>
-            <div class="pp-nav-dots"><span></span><span></span><span></span></div>
+      <div class="portfolio-preview" style="background:linear-gradient(135deg,#05060f,#0a0b1a);padding:20px;display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <span style="font-size:11px;font-weight:700;color:#fff;letter-spacing:.03em">Artifacts Coffee</span>
+          <span style="font-size:9px;color:var(--acid);letter-spacing:.08em;text-transform:uppercase;font-weight:600">Jhb Micro-Roastery</span>
+        </div>
+        <div>
+          <div style="font-size:9px;color:var(--acid);letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin-bottom:5px">Three Origins.</div>
+          <div style="font-size:16px;font-weight:800;color:#fff;letter-spacing:-0.5px;line-height:1.1">One Standard.</div>
+          <div style="font-size:10px;color:var(--muted);margin-top:4px;font-weight:300">Single-origin coffee, roasted to order.</div>
+        </div>
+        <div style="display:flex;gap:6px;margin-top:4px">
+          <div style="background:var(--acid);color:#08091a;font-size:9px;font-weight:700;padding:6px 12px;border-radius:4px">Shop now</div>
+          <div style="border:1px solid rgba(168,180,255,.2);color:var(--muted);font-size:9px;padding:6px 12px;border-radius:4px">Our story</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:4px">
+          <div style="background:rgba(139,90,43,.2);border:1px solid rgba(139,90,43,.3);border-radius:6px;padding:8px;text-align:center">
+            <div style="font-size:9px;font-weight:600;color:#fff;margin-bottom:2px">Guatemala</div>
+            <div style="font-size:8px;color:var(--muted)">from R150</div>
           </div>
-          <div class="pp-hero">
-            <div class="pp-hero-tag">Johannesburg Micro-Roastery</div>
-            <div class="pp-hero-h">Three Origins.<br><em>One Standard.</em></div>
-            <div class="pp-hero-sub">Single-origin specialty coffee, roasted to order.</div>
-            <div class="pp-btns">
-              <div class="pp-btn-primary">Shop now</div>
-              <div class="pp-btn-ghost">Our story</div>
-            </div>
+          <div style="background:rgba(34,85,34,.2);border:1px solid rgba(34,85,34,.3);border-radius:6px;padding:8px;text-align:center">
+            <div style="font-size:9px;font-weight:600;color:#fff;margin-bottom:2px">Mexico</div>
+            <div style="font-size:8px;color:var(--muted)">from R148</div>
           </div>
-          <div class="pp-products">
-            <div class="pp-product"><div class="pp-product-img gt"></div><div class="pp-product-name">Guatemala</div><div class="pp-product-price">from R150</div></div>
-            <div class="pp-product"><div class="pp-product-img mx"></div><div class="pp-product-name">Mexico</div><div class="pp-product-price">from R148</div></div>
-            <div class="pp-product"><div class="pp-product-img ni"></div><div class="pp-product-name">Nicaragua</div><div class="pp-product-price">from R140</div></div>
+          <div style="background:rgba(80,40,20,.2);border:1px solid rgba(80,40,20,.3);border-radius:6px;padding:8px;text-align:center">
+            <div style="font-size:9px;font-weight:600;color:#fff;margin-bottom:2px">Nicaragua</div>
+            <div style="font-size:8px;color:var(--muted)">from R140</div>
           </div>
         </div>
       </div>
