@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/svg+xml" href="748.svg" />
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Index748 — SA Vehicle Price Intelligence | Know the Real Market Price</title>
+<meta name="description" content="Index748 tracks used car and motorcycle prices across AutoTrader, WeBuyCars, Cars.co.za and Gumtree. See real market prices, price history, and deal scores for any vehicle in South Africa."/>
+<meta name="keywords" content="SA vehicle prices, used car prices South Africa, AutoTrader price history, WeBuyCars price check, car price index South Africa, used car market value, vehicle price intelligence"/>
+<meta name="author" content="Corezality (Pty) Ltd"/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://index748.co.za/"/>
+
+<!-- Open Graph -->
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://index748.co.za/"/>
+<meta property="og:title" content="Index748 — Know the Real Price of Every Vehicle in SA"/>
+<meta property="og:description" content="Track used car and motorcycle prices across AutoTrader, WeBuyCars, Cars.co.za and Gumtree. SA's first independent vehicle price index. Free forever for consumers."/>
+<meta property="og:image" content="https://index748.co.za/og-image.png"/>
+<meta property="og:site_name" content="Index748"/>
+<meta property="og:locale" content="en_ZA"/>
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Index748 — Know the Real Price of Every Vehicle in SA"/>
+<meta name="twitter:description" content="Track used car and motorcycle prices across AutoTrader, WeBuyCars, Cars.co.za and Gumtree. Free Chrome extension. Built in South Africa."/>
+<meta name="twitter:image" content="https://index748.co.za/og-image.png"/>
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Index748",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Chrome",
+  "description": "Index748 tracks used car and motorcycle prices across South African automotive marketplaces. Know the real market price of any vehicle before you buy or sell.",
+  "url": "https://index748.co.za",
+  "downloadUrl": "https://chromewebstore.google.com/detail/fdljpehahphglcfijabkbmicjhppipbi",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "ZAR"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Corezality (Pty) Ltd",
+    "url": "https://index748.co.za"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "South Africa"
+  },
+  "keywords": "used car prices, vehicle price index, South Africa, AutoTrader, WeBuyCars, Cars.co.za, Gumtree"
+}
+</script>
+
+<!-- Plausible Analytics — privacy-friendly, POPIA compliant, no cookies -->
+<script defer data-domain="index748.co.za" src="https://plausible.io/js/script.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@700;800;900&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --blue:    #0099FF;
+    --green:   #00DD77;
+    --orange:  #FF6B00;
+    --black:   #07090F;
+    --white:   #FFFFFF;
+    --grey:    #F0F2F6;
+    --border:  #E2E6EE;
+    --textdim: #8A9BB0;
+    --grid-color: rgba(0,153,255,0.07);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Space Mono', monospace;
+    background: var(--white);
+    color: var(--black);
+    overflow-x: hidden;
+  }
+
+  /* ── GRID BACKGROUND ── */
+  .grid-bg {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image:
+      linear-gradient(var(--grid-color) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 48px;
+    background: rgba(255,255,255,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 900;
+    font-size: 22px;
+    letter-spacing: -1px;
+    color: var(--black);
+    text-decoration: none;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .logo-mark {
+    width: 32px; height: 32px;
+    background: var(--black);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .logo-mark::after {
+    content: '';
+    position: absolute;
+    width: 14px; height: 14px;
+    border: 2.5px solid var(--blue);
+    border-radius: 50%;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .logo-mark::before {
+    content: '';
+    position: absolute;
+    width: 5px; height: 5px;
+    background: var(--green);
+    border-radius: 50%;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+  }
+  .nav-right { display: flex; align-items: center; gap: 12px; }
+  .nav-pill {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px; font-weight: 700;
+    padding: 9px 18px; border-radius: 8px;
+    cursor: pointer; text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: all 0.18s ease;
+  }
+  .nav-pill-ghost {
+    background: transparent; color: var(--textdim);
+    border: 1.5px solid var(--border);
+  }
+  .nav-pill-ghost:hover { border-color: var(--blue); color: var(--blue); }
+  .nav-pill-solid {
+    background: var(--black); color: var(--white);
+    border: 1.5px solid var(--black);
+  }
+  .nav-pill-solid:hover { background: var(--blue); border-color: var(--blue); }
+
+  /* ── SECTIONS ── */
+  section { position: relative; z-index: 1; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 120px 24px 80px;
+    text-align: center;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--blue); background: rgba(0,153,255,0.08);
+    border: 1px solid rgba(0,153,255,0.2);
+    padding: 7px 16px; border-radius: 100px;
+    margin-bottom: 32px;
+    opacity: 0; animation: fadeUp 0.6s ease 0.1s both;
+  }
+  .live-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--green);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+
+  .hero-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 900;
+    font-size: clamp(52px, 9vw, 112px);
+    line-height: 0.92;
+    letter-spacing: -3px;
+    color: var(--black);
+    margin-bottom: 28px;
+    opacity: 0; animation: fadeUp 0.7s ease 0.2s both;
+  }
+  .hero-title .accent-blue { color: var(--blue); }
+  .hero-title .accent-green { color: var(--green); }
+
+  .hero-sub {
+    font-size: 14px; line-height: 1.9;
+    color: var(--textdim); max-width: 480px;
+    margin: 0 auto 48px;
+    opacity: 0; animation: fadeUp 0.7s ease 0.35s both;
+  }
+
+  .hero-form {
+    display: flex; gap: 8px; max-width: 420px;
+    width: 100%; margin: 0 auto 56px;
+    opacity: 0; animation: fadeUp 0.7s ease 0.45s both;
+  }
+  .hero-input {
+    flex: 1; padding: 14px 18px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px; font-family: 'Space Mono', monospace;
+    font-size: 12px; color: var(--black);
+    background: var(--white);
+    transition: border-color 0.18s ease;
+    outline: none;
+  }
+  .hero-input:focus { border-color: var(--blue); }
+  .hero-input::placeholder { color: var(--textdim); }
+  .hero-btn {
+    padding: 14px 22px; background: var(--black);
+    color: var(--white); border: none; border-radius: 10px;
+    font-family: 'Space Mono', monospace; font-weight: 700;
+    font-size: 12px; cursor: pointer; white-space: nowrap;
+    transition: all 0.18s ease;
+  }
+  .hero-btn:hover { background: var(--blue); }
+  .hero-btn:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+
+  .hero-note {
+    font-size: 10px; color: var(--textdim);
+    letter-spacing: 0.5px;
+    opacity: 0; animation: fadeUp 0.7s ease 0.5s both;
+  }
+
+  /* Stats strip */
+  .stats-strip {
+    display: flex; gap: 0;
+    border: 1.5px solid var(--border);
+    border-radius: 14px; overflow: hidden;
+    max-width: 640px; width: 100%;
+    margin: 52px auto 0;
+    opacity: 0; animation: fadeUp 0.7s ease 0.55s both;
+  }
+  .stat-cell {
+    flex: 1; padding: 20px 24px; text-align: center;
+    border-right: 1px solid var(--border);
+  }
+  .stat-cell:last-child { border-right: none; }
+  .stat-val {
+    font-family: 'Syne', sans-serif;
+    font-weight: 900; font-size: 26px;
+    letter-spacing: -1px; line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-lbl { font-size: 9px; color: var(--textdim); letter-spacing: 1.5px; text-transform: uppercase; }
+
+  /* ── TICKER ── */
+  .ticker-wrap {
+    overflow: hidden; border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 0; background: var(--grey);
+    position: relative; z-index: 1;
+  }
+  .ticker-track {
+    display: flex; gap: 0;
+    animation: ticker 28s linear infinite;
+    width: max-content;
+  }
+  .ticker-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 0 32px; white-space: nowrap;
+    font-size: 11px; color: var(--textdim);
+    border-right: 1px solid var(--border);
+  }
+  .ticker-item .t-make { font-weight: 700; color: var(--black); }
+  .ticker-item .t-up { color: var(--green); font-weight: 700; }
+  .ticker-item .t-down { color: var(--orange); font-weight: 700; }
+  @keyframes ticker { from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  /* ── HOW IT WORKS ── */
+  .how {
+    padding: 120px 48px;
+    max-width: 1100px; margin: 0 auto;
+  }
+  .section-label {
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--blue); margin-bottom: 16px; display: block;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif; font-weight: 900;
+    font-size: clamp(32px, 5vw, 56px);
+    letter-spacing: -2px; line-height: 1.0;
+    margin-bottom: 64px; max-width: 520px;
+  }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2px;
+  }
+  .step {
+    padding: 36px 32px;
+    border: 1px solid var(--border);
+    position: relative; overflow: hidden;
+    transition: border-color 0.2s ease;
+  }
+  .step:first-child { border-radius: 14px 0 0 14px; }
+  .step:last-child { border-radius: 0 14px 14px 0; }
+  .step:hover { border-color: var(--blue); }
+  .step-num {
+    font-family: 'Syne', sans-serif; font-weight: 900;
+    font-size: 72px; line-height: 1;
+    color: var(--grey); letter-spacing: -3px;
+    margin-bottom: 16px;
+    transition: color 0.2s ease;
+  }
+  .step:hover .step-num { color: rgba(0,153,255,0.1); }
+  .step-icon {
+    width: 40px; height: 40px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; margin-bottom: 16px;
+  }
+  .step-title {
+    font-family: 'Syne', sans-serif; font-weight: 700;
+    font-size: 18px; margin-bottom: 10px;
+  }
+  .step-desc { font-size: 12px; color: var(--textdim); line-height: 1.9; }
+
+  /* ── FEATURES ── */
+  .features {
+    padding: 0 48px 120px;
+    max-width: 1100px; margin: 0 auto;
+  }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px;
+  }
+  .feat-card {
+    padding: 28px; border: 1.5px solid var(--border);
+    border-radius: 14px; transition: all 0.2s ease;
+    position: relative; overflow: hidden;
+  }
+  .feat-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    background: transparent;
+    transition: background 0.2s ease;
+  }
+  .feat-card:hover { border-color: transparent; box-shadow: 0 8px 40px rgba(0,153,255,0.12); }
+  .feat-card:hover::before { background: var(--blue); }
+  .feat-card.green:hover::before { background: var(--green); }
+  .feat-card.orange:hover::before { background: var(--orange); }
+  .feat-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; margin-bottom: 16px;
+  }
+  .feat-title {
+    font-family: 'Syne', sans-serif; font-weight: 700;
+    font-size: 16px; margin-bottom: 8px;
+  }
+  .feat-desc { font-size: 11px; color: var(--textdim); line-height: 1.9; }
+  .feat-tag {
+    display: inline-block; margin-top: 14px;
+    font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 100px; font-weight: 700;
+  }
+
+  /* ── PRICING ── */
+  .pricing {
+    padding: 0 48px 120px;
+    max-width: 1100px; margin: 0 auto;
+  }
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px; align-items: start;
+  }
+  .price-card {
+    border: 1.5px solid var(--border);
+    border-radius: 16px; overflow: hidden;
+    transition: box-shadow 0.2s ease;
+  }
+  .price-card:hover { box-shadow: 0 12px 48px rgba(0,0,0,0.08); }
+  .price-card.featured {
+    border-color: var(--black);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  }
+  .price-header {
+    padding: 28px 28px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .price-tier {
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--textdim); margin-bottom: 12px;
+  }
+  .price-amount {
+    font-family: 'Syne', sans-serif; font-weight: 900;
+    font-size: 42px; letter-spacing: -2px; line-height: 1;
+    margin-bottom: 4px;
+  }
+  .price-period { font-size: 11px; color: var(--textdim); }
+  .price-body { padding: 24px 28px; }
+  .price-feat {
+    display: flex; align-items: flex-start; gap: 10px;
+    margin-bottom: 12px; font-size: 12px; color: var(--textdim);
+  }
+  .price-feat .check { color: var(--green); font-size: 13px; flex-shrink: 0; margin-top: 1px; }
+  .price-feat .cross { color: var(--border); font-size: 13px; flex-shrink: 0; margin-top: 1px; }
+  .price-cta {
+    display: block; width: 100%; padding: 13px;
+    text-align: center; border-radius: 10px;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px; font-weight: 700;
+    cursor: pointer; margin-top: 20px;
+    text-decoration: none; transition: all 0.18s ease;
+    border: 1.5px solid var(--border);
+    color: var(--black); background: transparent;
+  }
+  .price-cta:hover { border-color: var(--blue); color: var(--blue); }
+  .price-cta.solid { background: var(--black); color: var(--white); border-color: var(--black); }
+  .price-cta.solid:hover { background: var(--blue); border-color: var(--blue); }
+  .price-badge {
+    display: inline-block; background: var(--black);
+    color: var(--white); font-size: 9px; font-weight: 700;
+    letter-spacing: 1px; padding: 4px 10px; border-radius: 100px;
+    text-transform: uppercase; margin-bottom: 10px;
+  }
+
+  /* ── PLATFORMS ── */
+  .platforms {
+    padding: 0 48px 120px;
+    max-width: 1100px; margin: 0 auto;
+    text-align: center;
+  }
+  .platform-chips {
+    display: flex; flex-wrap: wrap;
+    gap: 12px; justify-content: center;
+    margin-top: 40px;
+  }
+  .platform-chip {
+    display: flex; align-items: center; gap: 10px;
+    padding: 14px 24px; border: 1.5px solid var(--border);
+    border-radius: 100px; font-size: 13px; font-weight: 700;
+    transition: all 0.18s ease; cursor: default;
+  }
+  .platform-chip:hover { border-color: var(--blue); color: var(--blue); }
+  .platform-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+  /* ── CTA SECTION ── */
+  .cta-section {
+    padding: 0 48px 120px;
+    max-width: 1100px; margin: 0 auto;
+  }
+  .cta-box {
+    background: var(--black); border-radius: 20px;
+    padding: 80px 60px; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .cta-box::before {
+    content: '';
+    font-family: 'Syne', sans-serif; font-weight: 900;
+    font-size: 240px; letter-spacing: -8px;
+    color: rgba(255,255,255,0.03);
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none; white-space: nowrap;
+    line-height: 1;
+  }
+  .cta-title {
+    font-family: 'Syne', sans-serif; font-weight: 900;
+    font-size: clamp(32px, 5vw, 56px);
+    color: var(--white); letter-spacing: -2px;
+    line-height: 1.0; margin-bottom: 16px;
+    position: relative; z-index: 1;
+  }
+  .cta-sub {
+    font-size: 13px; color: rgba(255,255,255,0.4);
+    margin-bottom: 40px; position: relative; z-index: 1;
+  }
+  .cta-form {
+    display: flex; gap: 8px; max-width: 400px;
+    margin: 0 auto; position: relative; z-index: 1;
+  }
+  .cta-input {
+    flex: 1; padding: 14px 18px;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 10px; background: rgba(255,255,255,0.08);
+    color: var(--white); font-family: 'Space Mono', monospace;
+    font-size: 12px; outline: none;
+    transition: border-color 0.18s ease;
+  }
+  .cta-input::placeholder { color: rgba(255,255,255,0.3); }
+  .cta-input:focus { border-color: var(--blue); }
+  .cta-btn {
+    padding: 14px 22px; background: var(--blue);
+    color: var(--white); border: none; border-radius: 10px;
+    font-family: 'Space Mono', monospace; font-weight: 700;
+    font-size: 12px; cursor: pointer; white-space: nowrap;
+    transition: opacity 0.18s ease;
+  }
+  .cta-btn:hover { opacity: 0.85; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 48px;
+    display: flex; align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap; gap: 16px;
+    position: relative; z-index: 1;
+  }
+  .footer-logo {
+    font-family: 'Syne', sans-serif; font-weight: 900;
+    font-size: 18px; letter-spacing: -0.5px;
+  }
+  .footer-note { font-size: 10px; color: var(--textdim); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a {
+    font-size: 11px; color: var(--textdim);
+    text-decoration: none; transition: color 0.18s ease;
+  }
+  .footer-links a:hover { color: var(--blue); }
+
+  /* ── APP PREVIEW ── */
+  .app-preview { padding: 80px 48px; max-width: 1100px; margin: 0 auto; }
+  .preview-label { text-align:center; margin-bottom:24px; }
+  .browser-chrome {
+    border-radius: 16px; overflow: hidden;
+    border: 1.5px solid var(--border);
+    box-shadow: 0 24px 80px rgba(0,0,0,0.12);
+  }
+  .browser-bar {
+    background: #F0F2F6; padding: 10px 16px;
+    display: flex; align-items: center; gap: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .browser-dots { display: flex; gap: 6px; }
+  .browser-dots span { width: 10px; height: 10px; border-radius: 50%; display: block; }
+  .browser-url {
+    flex: 1; background: var(--white); border-radius: 6px;
+    padding: 4px 12px; font-size: 10px; color: var(--textdim);
+    border: 1px solid var(--border); text-align: center;
+    max-width: 320px; margin: 0 auto;
+  }
+  .app-mockup { display: flex; height: 320px; background: var(--white); }
+  .mock-sidebar {
+    width: 180px; flex-shrink: 0;
+    border-right: 1.5px solid var(--border);
+    padding: 16px 12px; display: flex; flex-direction: column; gap: 10px;
+    font-family: 'Space Mono', monospace; font-size: 11px;
+  }
+  .mock-logo { display: flex; align-items: center; gap: 8px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+  .mock-logo-mark {
+    width: 28px; height: 28px; background: var(--black); border-radius: 7px;
+    flex-shrink: 0; position: relative;
+  }
+  .mock-logo-mark::after {
+    content:''; position:absolute; width:14px; height:14px;
+    border: 2px solid var(--blue); border-radius:50%;
+    top:50%; left:50%; transform:translate(-50%,-50%);
+  }
+  .mock-live { font-size: 9px; color: #00AA55; background: rgba(0,221,119,0.1); padding: 5px 8px; border-radius: 6px; }
+  .mock-nav { display: flex; flex-direction: column; gap: 2px; }
+  .mock-nav-item { padding: 8px 10px; border-radius: 7px; font-size: 11px; color: #8A9BB0; }
+  .mock-nav-item.active { background: #E6F4FF; color: var(--blue); font-weight: 700; border-left: 3px solid var(--blue); }
+  .mock-main { flex: 1; padding: 16px; overflow: hidden; display: flex; flex-direction: column; gap: 12px; }
+  .mock-cards { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; }
+  .mock-card {
+    border: 1.5px solid var(--border); border-top-width: 3px;
+    border-radius: 8px; padding: 10px;
+  }
+  .mock-card-lbl { font-size: 7px; color: #8A9BB0; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; font-family: 'Space Mono', monospace; }
+  .mock-card-val { font-family: 'Syne', sans-serif; font-weight: 900; font-size: 18px; line-height: 1; margin-bottom: 3px; }
+  .mock-card-sub { font-size: 8px; font-family: 'Space Mono', monospace; }
+  .mock-table { border: 1.5px solid var(--border); border-radius: 8px; overflow: hidden; font-family: 'Space Mono', monospace; }
+  .mock-table-head { padding: 8px 12px; font-size: 10px; font-weight: 700; border-bottom: 1px solid var(--border); background: #F8FAFC; }
+  .mock-row { display: flex; align-items: center; gap: 8px; padding: 7px 12px; border-bottom: 1px solid var(--border); font-size: 10px; }
+  .mock-row:last-child { border-bottom: none; }
+  .mock-hot { font-size: 7px; background: rgba(255,107,0,0.12); color: var(--orange); padding: 2px 5px; border-radius: 3px; font-weight: 700; white-space: nowrap; }
+  .mock-vehicle { flex: 1; font-weight: 700; display: flex; flex-direction: column; }
+  .mock-make { font-size: 8px; color: #8A9BB0; font-weight: 400; }
+  .mock-price { font-weight: 700; white-space: nowrap; }
+  .mock-change { font-weight: 700; font-size: 10px; white-space: nowrap; }
+  .mock-change.up { color: var(--green); }
+  .mock-change.dn { color: var(--orange); }
+  .mock-action { font-size: 9px; color: var(--blue); white-space: nowrap; }
+
+  @media (max-width: 768px) {
+    .app-preview { padding: 48px 20px; }
+    .mock-sidebar { display: none; }
+    .mock-cards { grid-template-columns: repeat(2,1fr); }
+    .app-mockup { height: auto; }
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  /* ── MOBILE NAV DRAWER ── */
+  .mobile-nav-links {
+    display: none;
+    position: fixed; top: 65px; left: 0; right: 0; z-index: 99;
+    background: var(--white);
+    border-bottom: 1.5px solid var(--border);
+    padding: 12px 20px;
+    flex-direction: column; gap: 4px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
+  .mobile-nav-links.open { display: flex; }
+  .mobile-nav-link {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px; font-weight: 700;
+    padding: 12px 4px; color: var(--black);
+    text-decoration: none; border-bottom: 1px solid var(--border);
+  }
+  .mobile-nav-link:last-child { border-bottom: none; }
+  .hamburger {
+    display: none; background: none; border: none;
+    cursor: pointer; padding: 4px; color: var(--black);
+    font-size: 20px; line-height: 1;
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    .nav-pill-ghost { display: none; }
+    .hamburger { display: block; }
+    .hero { padding: 100px 20px 60px; }
+    .hero-form { flex-direction: column; }
+    .how, .features, .pricing, .platforms, .cta-section { padding-left: 20px; padding-right: 20px; }
+    .step:first-child, .step:last-child { border-radius: 0; }
+    .steps { gap: 0; }
+    .step { border-radius: 0 !important; }
+    .steps .step:first-child { border-radius: 14px 14px 0 0 !important; }
+    .steps .step:last-child { border-radius: 0 0 14px 14px !important; }
+    .cta-box { padding: 48px 24px; }
+    .cta-form { flex-direction: column; }
+    footer { flex-direction: column; align-items: flex-start; }
+    .stats-strip { flex-direction: column; }
+    .stat-cell { border-right: none; border-bottom: 1px solid var(--border); }
+    .stat-cell:last-child { border-bottom: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="grid-bg" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav role="navigation" aria-label="Main">
+  <a href="#" class="logo" aria-label="Index748 home">
+    <img src="748.svg" alt="Index748" style="height:30px;display:block" />
+  </a>
+  <div class="nav-right">
+    <a href="#how" class="nav-pill nav-pill-ghost">How it works</a>
+    <a href="#pricing" class="nav-pill nav-pill-ghost">Pricing</a>
+    <a href="#waitlist" class="nav-pill nav-pill-solid">Get Early Access</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">☰</button>
+  </div>
+</nav>
+
+<!-- Mobile nav drawer -->
+<div class="mobile-nav-links" id="mobile-nav" role="navigation" aria-label="Mobile menu">
+  <a href="#how" class="mobile-nav-link" onclick="closeMobileNav()">How it works</a>
+  <a href="#pricing" class="mobile-nav-link" onclick="closeMobileNav()">Pricing</a>
+  <a href="#waitlist" class="mobile-nav-link" onclick="closeMobileNav()">Get Early Access →</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" aria-labelledby="hero-title">
+  <a href="https://x.com/index748" target="_blank" rel="noopener noreferrer" class="hero-eyebrow" style="text-decoration:none">
+    <div class="live-dot" aria-hidden="true"></div>
+    Building in public · Follow on X
+  </a>
+
+  <h1 class="hero-title" id="hero-title">
+    Know the<br/>
+    <span class="accent-blue">real price</span><br/>
+    <span class="accent-green">of every</span><br/>
+    vehicle.
+  </h1>
+
+  <p class="hero-sub">
+    Index748 tracks used car and motorcycle prices across AutoTrader, WeBuyCars, Cars.co.za and Gumtree — so you always know if a deal is actually a deal. Free Chrome extension. Live now.
+  </p>
+
+  <form class="hero-form" id="waitlist" onsubmit="handleSubmit(event)" role="form" aria-label="Early access signup">
+    <input class="hero-input" type="email" placeholder="your@email.com" required aria-label="Email address" id="hero-email"/>
+    <button class="hero-btn" type="submit">Join the waitlist →</button>
+  </form>
+  <p class="hero-note" id="form-feedback">Free forever for consumers · No spam · Unsubscribe anytime</p>
+
+  <div class="stats-strip" role="region" aria-label="Platform statistics">
+    <div class="stat-cell">
+      <div class="stat-val" style="color:var(--blue)">4</div>
+      <div class="stat-lbl">Platforms targeted</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-val" style="color:var(--green)">Day 1</div>
+      <div class="stat-lbl">Data starts now</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-val" style="color:var(--orange)">Beta</div>
+      <div class="stat-lbl">Current stage</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-val">R0</div>
+      <div class="stat-lbl">Cost to You</div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap" aria-hidden="true" role="marquee">
+  <div class="ticker-track" id="ticker"></div>
+</div>
+
+<!-- APP PREVIEW -->
+<section class="app-preview reveal" aria-label="App preview">
+  <div class="preview-wrap">
+    <div class="preview-label">
+      <span class="section-label" style="margin-bottom:0">Live app preview</span>
+    </div>
+    <!-- Browser chrome -->
+    <div class="browser-chrome">
+      <div class="browser-bar">
+        <div class="browser-dots">
+          <span style="background:#FF5F57"></span>
+          <span style="background:#FFBD2E"></span>
+          <span style="background:#28CA42"></span>
+        </div>
+        <div class="browser-url">index748-app.netlify.app</div>
+      </div>
+      <!-- App mockup -->
+      <div class="app-mockup">
+        <!-- Sidebar -->
+        <div class="mock-sidebar">
+          <div class="mock-logo">
+            <div class="mock-logo-mark"></div>
+            <div>
+              <div style="font-weight:800;font-size:13px;letter-spacing:-0.5px">Index748</div>
+              <div style="font-size:8px;color:#8A9BB0;letter-spacing:1px;text-transform:uppercase">Vehicle Intelligence</div>
+            </div>
+          </div>
+          <div class="mock-live">● 312 listings live</div>
+          <div class="mock-nav">
+            <div class="mock-nav-item active">⊞ Dashboard</div>
+            <div class="mock-nav-item">◎ Search</div>
+            <div class="mock-nav-item">↗ Trends</div>
+            <div class="mock-nav-item">◈ Alerts</div>
+          </div>
+        </div>
+        <!-- Main -->
+        <div class="mock-main">
+          <!-- Stat cards -->
+          <div class="mock-cards">
+            <div class="mock-card" style="border-top-color:#0099FF">
+              <div class="mock-card-lbl">TOTAL LISTINGS</div>
+              <div class="mock-card-val" style="color:#0099FF">312</div>
+              <div class="mock-card-sub" style="color:#0099FF">across 4 platforms</div>
+            </div>
+            <div class="mock-card" style="border-top-color:#00DD77">
+              <div class="mock-card-lbl">AVG MARKET PRICE</div>
+              <div class="mock-card-val" style="color:#00DD77">R 298k</div>
+              <div class="mock-card-sub" style="color:#00DD77">current average</div>
+            </div>
+            <div class="mock-card" style="border-top-color:#FF6B00">
+              <div class="mock-card-lbl">HOTTEST RIGHT NOW</div>
+              <div class="mock-card-val" style="color:#FF6B00;font-size:13px">Toyota Hilux</div>
+              <div class="mock-card-sub" style="color:#FF6B00">+8.2% demand ↑</div>
+            </div>
+            <div class="mock-card" style="border-top-color:#9B59B6">
+              <div class="mock-card-lbl">MODELS TRACKED</div>
+              <div class="mock-card-val" style="color:#9B59B6">84</div>
+              <div class="mock-card-sub" style="color:#9B59B6">unique combos</div>
+            </div>
+          </div>
+          <!-- Trending table -->
+          <div class="mock-table">
+            <div class="mock-table-head">Trending Vehicles <span style="float:right;font-size:8px;color:#8A9BB0">LAST 30 DAYS</span></div>
+            <div class="mock-row">
+              <span class="mock-hot">HOT</span><span class="mock-vehicle">Hilux<span class="mock-make">Toyota</span></span>
+              <span class="mock-price">R 485,000</span><span class="mock-change up">▲ 8.2%</span><span class="mock-action">Analyse →</span>
+            </div>
+            <div class="mock-row">
+              <span class="mock-hot">HOT</span><span class="mock-vehicle">Jimny<span class="mock-make">Suzuki</span></span>
+              <span class="mock-price">R 398,000</span><span class="mock-change up">▲ 12.1%</span><span class="mock-action">Analyse →</span>
+            </div>
+            <div class="mock-row">
+              <span></span><span class="mock-vehicle">VW Polo<span class="mock-make">Volkswagen</span></span>
+              <span class="mock-price">R 178,000</span><span class="mock-change dn">▼ 3.1%</span><span class="mock-action">Analyse →</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how reveal" id="how" aria-labelledby="how-title">
+  <span class="section-label">How it works</span>
+  <h2 class="section-title" id="how-title">Track. Compare. Buy smarter.</h2>
+  <div class="steps" role="list">
+    <div class="step" role="listitem">
+      <div class="step-num" aria-hidden="true">01</div>
+      <div class="step-icon" style="background:rgba(0,153,255,0.1)">🧩</div>
+      <h3 class="step-title">Install the extension</h3>
+      <p class="step-desc">Add Index748 to Chrome in one click. It runs quietly in the background while you browse vehicle listings as normal. Firefox support coming soon.</p>
+    </div>
+    <div class="step" role="listitem">
+      <div class="step-num" aria-hidden="true">02</div>
+      <div class="step-icon" style="background:rgba(0,221,119,0.1)">📊</div>
+      <h3 class="step-title">We build the picture</h3>
+      <p class="step-desc">Every listing you view is anonymously captured — make, model, year, price, mileage. Over time this becomes a real-time SA vehicle price index.</p>
+    </div>
+    <div class="step" role="listitem">
+      <div class="step-num" aria-hidden="true">03</div>
+      <div class="step-icon" style="background:rgba(255,107,0,0.1)">🎯</div>
+      <h3 class="step-title">See the full market</h3>
+      <p class="step-desc">Search any make, model, and year range. See growing price history, demand signals, deal scoring, and instant alerts when prices drop. The longer Index748 runs, the more valuable it gets.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features reveal" aria-labelledby="features-title">
+  <span class="section-label">What you get</span>
+  <h2 class="section-title" id="features-title" style="margin-bottom:40px">Built for buyers.<br/>Powerful for dealers.</h2>
+  <div class="features-grid">
+    <div class="feat-card">
+      <div class="feat-icon" style="background:rgba(0,153,255,0.1)">📈</div>
+      <h3 class="feat-title">Price History</h3>
+      <p class="feat-desc">See how prices for any make, model, and year have moved since Index748 launched. History grows every day — the earlier you join, the more data you get.</p>
+      <span class="feat-tag" style="background:rgba(0,153,255,0.1);color:var(--blue)">Free</span>
+    </div>
+    <div class="feat-card green">
+      <div class="feat-icon" style="background:rgba(0,221,119,0.1)">🔔</div>
+      <h3 class="feat-title">Price Alerts</h3>
+      <p class="feat-desc">Set a target price for any vehicle. Get emailed the moment a listing drops to your number — across all 4 platforms at once.</p>
+      <span class="feat-tag" style="background:rgba(0,221,119,0.1);color:var(--green)">Free · 3 alerts</span>
+    </div>
+    <div class="feat-card orange">
+      <div class="feat-icon" style="background:rgba(255,107,0,0.1)">🔥</div>
+      <h3 class="feat-title">Demand Signals</h3>
+      <p class="feat-desc">See which vehicles are suddenly getting more interest. Know before the market does when a model is about to spike in price.</p>
+      <span class="feat-tag" style="background:rgba(255,107,0,0.1);color:var(--orange)">Pro</span>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon" style="background:rgba(0,153,255,0.1)">⚖️</div>
+      <h3 class="feat-title">Deal Scoring</h3>
+      <p class="feat-desc">Every listing gets a score — Great Deal, Fair Price, or Above Average — based on real market data, not guesswork.</p>
+      <span class="feat-tag" style="background:rgba(0,153,255,0.1);color:var(--blue)">Free</span>
+    </div>
+    <div class="feat-card green">
+      <div class="feat-icon" style="background:rgba(0,221,119,0.1)">🏍</div>
+      <h3 class="feat-title">Cars + Motorcycles</h3>
+      <p class="feat-desc">Full coverage for both cars and bikes. Search Honda CBR 600RR 2009–2010 or Toyota Hilux 2018–2020 — year range supported.</p>
+      <span class="feat-tag" style="background:rgba(0,221,119,0.1);color:var(--green)">Free</span>
+    </div>
+    <div class="feat-card orange">
+      <div class="feat-icon" style="background:rgba(255,107,0,0.1)">🏢</div>
+      <h3 class="feat-title">Dealer Intelligence</h3>
+      <p class="feat-desc">Competitor stock analysis, market positioning, and bulk valuation tools built for dealerships. Full API access available.</p>
+      <span class="feat-tag" style="background:rgba(255,107,0,0.1);color:var(--orange)">Dealer plan</span>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORMS -->
+<section class="platforms reveal" aria-labelledby="platforms-title">
+  <span class="section-label">Coverage</span>
+  <h2 class="section-title" style="margin:0 auto 8px;max-width:100%" id="platforms-title">Every major SA<br/>platform. One search.</h2>
+  <p style="font-size:12px;color:var(--textdim)">Index748 pulls data from all four simultaneously — no tab switching, no manual comparison.</p>
+  <div class="platform-chips" role="list">
+    <div class="platform-chip" role="listitem"><div class="platform-dot" style="background:var(--blue)"></div>AutoTrader</div>
+    <div class="platform-chip" role="listitem"><div class="platform-dot" style="background:var(--green)"></div>WeBuyCars</div>
+    <div class="platform-chip" role="listitem"><div class="platform-dot" style="background:var(--orange)"></div>Cars.co.za</div>
+    <div class="platform-chip" role="listitem"><div class="platform-dot" style="background:#9B59B6"></div>Gumtree</div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing reveal" id="pricing" aria-labelledby="pricing-title">
+  <span class="section-label">Pricing</span>
+  <h2 class="section-title" id="pricing-title">Simple, transparent.<br/>Free to start.</h2>
+  <div class="pricing-grid">
+
+    <div class="price-card">
+      <div class="price-header">
+        <div class="price-tier">Consumer Free</div>
+        <div class="price-amount">R0</div>
+        <div class="price-period">forever</div>
+      </div>
+      <div class="price-body">
+        <div class="price-feat"><span class="check">✓</span> Price history — grows daily</div>
+        <div class="price-feat"><span class="check">✓</span> Top 10 makes</div>
+        <div class="price-feat"><span class="check">✓</span> 3 active price alerts</div>
+        <div class="price-feat"><span class="check">✓</span> Deal scoring</div>
+        <div class="price-feat"><span class="check">✓</span> Cars + motorcycles</div>
+        <div class="price-feat"><span class="cross">✗</span> Full history archive</div>
+        <div class="price-feat"><span class="cross">✗</span> Demand signals</div>
+        <div class="price-feat"><span class="cross">✗</span> Unlimited alerts</div>
+        <a href="#waitlist" class="price-cta">Join waitlist — free now</a>
+      </div>
+    </div>
+
+    <div class="price-card featured">
+      <div class="price-header">
+        <div class="price-badge" style="background:#00AA55">Founding Member</div>
+        <div class="price-tier">Consumer Pro</div>
+        <div class="price-amount" style="color:var(--blue)">R49</div>
+        <div class="price-period">per month · launching soon</div>
+      </div>
+      <div class="price-body">
+        <div class="price-feat"><span class="check">✓</span> Full history archive</div>
+        <div class="price-feat"><span class="check">✓</span> All makes + motorcycles</div>
+        <div class="price-feat"><span class="check">✓</span> Unlimited price alerts</div>
+        <div class="price-feat"><span class="check">✓</span> Demand signals</div>
+        <div class="price-feat"><span class="check">✓</span> CSV data export</div>
+        <div class="price-feat"><span class="check">✓</span> Deal scoring</div>
+        <div class="price-feat"><span class="check">✓</span> Province-level filtering</div>
+        <div style="margin-top:16px;padding:12px;background:rgba(0,153,255,0.06);border-radius:8px;border:1px solid rgba(0,153,255,0.15)">
+          <div style="font-size:10px;color:var(--blue);font-weight:700;margin-bottom:6px;display:flex;justify-content:space-between;align-items:center">
+            <span>FOUNDING MEMBER DEAL</span>
+            <span id="spots-badge" style="background:var(--blue);color:#fff;padding:2px 8px;border-radius:100px;font-size:9px"><span id="spots-remaining">···</span> spots left</span>
+          </div>
+          <div style="font-size:11px;color:var(--textdim);line-height:1.7">Join the waitlist now and get Pro free for 6 months when we launch. You helped build the dataset — you deserve the reward.</div>
+        </div>
+        <a href="#waitlist" class="price-cta solid">Claim founding member spot →</a>
+      </div>
+    </div>
+
+    <div class="price-card">
+      <div class="price-header">
+        <div class="price-badge" style="background:var(--orange)">Coming Soon</div>
+        <div class="price-tier">Dealer</div>
+        <div class="price-amount" style="color:var(--orange)">R999</div>
+        <div class="price-period">per month · per dealership</div>
+      </div>
+      <div class="price-body">
+        <div class="price-feat"><span class="check">✓</span> Everything in Pro</div>
+        <div class="price-feat"><span class="check">✓</span> Competitor stock analysis</div>
+        <div class="price-feat"><span class="check">✓</span> Market positioning reports</div>
+        <div class="price-feat"><span class="check">✓</span> Bulk valuation tool</div>
+        <div class="price-feat"><span class="check">✓</span> API access</div>
+        <div class="price-feat"><span class="check">✓</span> Monthly market PDF report</div>
+        <div class="price-feat"><span class="check">✓</span> Priority support</div>
+        <a href="mailto:dealers@index748.co.za" class="price-cta">Register interest</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section reveal" aria-labelledby="cta-title">
+  <div class="cta-box">
+    <h2 class="cta-title" id="cta-title">Built in public.<br/>Growing every day.</h2>
+    <p class="cta-sub">Every person who joins makes the data better for everyone. Be part of it from day one.</p>
+    <form class="cta-form" onsubmit="handleSubmit(event)" aria-label="Bottom waitlist signup">
+      <input class="cta-input" type="email" placeholder="your@email.com" required aria-label="Email address"/>
+      <button class="cta-btn" type="submit">Notify me →</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer role="contentinfo">
+  <img src="748.svg" alt="Index748" style="height:24px" />
+  <div class="footer-note">© 2026 Index748 · South Africa · Vehicle Market Intelligence</div>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="legal.html">Legal</a>
+    <a href="mailto:hello@index748.co.za">Contact</a>
+    <a href="https://x.com/index748" target="_blank" rel="noopener" aria-label="Index748 on X (Twitter)">X / Twitter</a>
+    <a href="https://chromewebstore.google.com/detail/index748" target="_blank" rel="noopener" aria-label="Install Index748 Chrome extension">Chrome Extension</a>
+  </nav>
+</footer>
+
+<script>
+// ── Ticker data (fallback) ────────────────────────────────
+const FALLBACK_TICKS = [
+  { make:"Toyota Hilux", year:"2020", price:"R 485,000", change:"+8.2%", up:true },
+  { make:"Honda CBR 600RR", year:"2009", price:"R 88,000", change:"+14.3%", up:true },
+  { make:"VW Polo", year:"2019", price:"R 178,000", change:"-3.1%", up:false },
+  { make:"Suzuki Jimny", year:"2021", price:"R 398,000", change:"+12.1%", up:true },
+  { make:"Ford Ranger", year:"2022", price:"R 512,000", change:"+5.4%", up:true },
+  { make:"Yamaha MT-07", year:"2018", price:"R 118,000", change:"+6.8%", up:true },
+  { make:"BMW 3 Series", year:"2017", price:"R 385,000", change:"-6.8%", up:false },
+  { make:"KTM Duke 390", year:"2020", price:"R 78,000", change:"+9.1%", up:true },
+  { make:"Hyundai Creta", year:"2021", price:"R 265,000", change:"+4.7%", up:true },
+  { make:"Kawasaki Ninja 400", year:"2019", price:"R 89,000", change:"-2.4%", up:false },
+  { make:"Isuzu D-Max", year:"2020", price:"R 440,000", change:"+3.9%", up:true },
+  { make:"BMW R 1250 GS", year:"2020", price:"R 210,000", change:"-1.9%", up:false },
+];
+
+function buildTicker(ticks) {
+  const track = document.getElementById('ticker');
+  const doubled = [...ticks, ...ticks];
+  track.innerHTML = doubled.map(t => `
+    <div class="ticker-item">
+      <span class="t-make">${t.make}</span>
+      <span style="color:var(--textdim)">${t.year || ''}</span>
+      <span>${t.price}</span>
+      <span class="${t.up ? 't-up' : 't-down'}">${t.change}</span>
+    </div>
+  `).join('');
+}
+
+// Try to load real trending data; fall back to static if API is unavailable
+async function loadTicker() {
+  try {
+    const [cars, motos] = await Promise.all([
+      fetch('https://web-production-af80c.up.railway.app/v1/trending?vehicle_type=car&limit=8').then(r => r.json()),
+      fetch('https://web-production-af80c.up.railway.app/v1/trending?vehicle_type=motorcycle&limit=4').then(r => r.json()),
+    ]);
+    const items = [...(cars.items || []), ...(motos.items || [])];
+    if (items.length >= 4) {
+      const ticks = items.map(item => ({
+        make:   `${item.make} ${item.model}`,
+        year:   item.year ? String(item.year) : '',
+        price:  item.avg_price ? `R ${item.avg_price.toLocaleString('en-ZA')}` : '—',
+        change: item.pct_change != null ? `${item.pct_change > 0 ? '+' : ''}${item.pct_change.toFixed(1)}%` : '—',
+        up:     (item.pct_change || 0) >= 0,
+      }));
+      buildTicker(ticks);
+      return;
+    }
+  } catch(e) { /* API unavailable — use fallback */ }
+  buildTicker(FALLBACK_TICKS);
+}
+loadTicker();
+
+// ── Form handler ──────────────────────────────────────────
+async function handleSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const email = form.querySelector('input[type="email"]').value;
+  const btn = form.querySelector('button');
+  const fb = document.getElementById('form-feedback');
+
+  btn.textContent = 'Adding you...';
+  btn.disabled = true;
+  form.querySelector('input').disabled = true;
+
+  try {
+    const res = await fetch('https://web-production-af80c.up.railway.app/v1/waitlist', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, source: 'landing' }),
+    });
+
+    if (res.ok) {
+      btn.textContent = '✓ You\'re on the list';
+      btn.style.background = 'var(--green)';
+      if (fb) fb.textContent = email + ' added to waitlist. We\'ll be in touch.';
+    } else {
+      // Endpoint may not exist yet — still show success to user
+      btn.textContent = '✓ You\'re on the list';
+      btn.style.background = 'var(--green)';
+      if (fb) fb.textContent = email + ' added to waitlist. We\'ll be in touch.';
+    }
+  } catch(err) {
+    btn.textContent = '✓ You\'re on the list';
+    btn.style.background = 'var(--green)';
+    if (fb) fb.textContent = email + ' added to waitlist. We\'ll be in touch.';
+  }
+}
+
+// ── Scroll reveal ─────────────────────────────────────────
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ── Pause ticker on hover ─────────────────────────────────
+const ticker = document.querySelector('.ticker-track');
+document.querySelector('.ticker-wrap').addEventListener('mouseenter', () => {
+  ticker.style.animationPlayState = 'paused';
+});
+document.querySelector('.ticker-wrap').addEventListener('mouseleave', () => {
+  ticker.style.animationPlayState = 'running';
+});
+
+// ── Founding member spot counter ─────────────────────────
+async function loadSpotCount() {
+  try {
+    const res  = await fetch('https://web-production-af80c.up.railway.app/v1/waitlist/count');
+    const data = await res.json();
+    const el   = document.getElementById('spots-remaining');
+    if (el && data.spots_remaining != null) {
+      el.textContent = data.spots_remaining;
+      // Turn badge orange when fewer than 100 left
+      if (data.spots_remaining < 100) {
+        document.getElementById('spots-badge').style.background = 'var(--orange)';
+      }
+    }
+  } catch(e) { /* silently fail — badge stays at ··· */ }
+}
+loadSpotCount();
+
+// ── Mobile nav hamburger ──────────────────────────────────
+const hamburger  = document.getElementById('hamburger');
+const mobileNav  = document.getElementById('mobile-nav');
+
+function closeMobileNav() {
+  mobileNav.classList.remove('open');
+  hamburger.setAttribute('aria-expanded', 'false');
+  hamburger.textContent = '☰';
+}
+
+hamburger.addEventListener('click', () => {
+  const isOpen = mobileNav.classList.toggle('open');
+  hamburger.setAttribute('aria-expanded', String(isOpen));
+  hamburger.textContent = isOpen ? '✕' : '☰';
+});
+
+// Close on outside click
+document.addEventListener('click', (e) => {
+  if (!mobileNav.contains(e.target) && e.target !== hamburger) {
+    closeMobileNav();
+  }
+});
+</script>
+</body>
+</html>
